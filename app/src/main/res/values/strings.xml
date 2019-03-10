@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BGL Tracker</string>
+
+    <!--Menu strings-->
+    <string name="menu_filter">filter</string>
+    <string name="menu_sort">sort</string>
+    <string name="menu_more_vert">more</string>
+
+    <!--Filter Strings-->
+    <string name="menu_filter_all">All</string>
+    <string name="menu_filter_glucose">Glucose</string>
+    <string name="menu_filter_insulin">Insulin</string>
+    <string name="menu_filter_medication">Medication</string>
+
+    <!--Sort Strings-->
+    <string name="menu_sort_lastDay">LastDay</string>
+    <string name="menu_sort_lastWeek">LastWeek</string>
+    <string name="menu_sort_SelectDateRange">SelectDateRange</string>
+
+    <string-array name="insulin_type_entry">
+        <item>1st type</item>
+        <item>2nd type</item>
+        <item>3rd type</item>
+    </string-array>
+</resources>
