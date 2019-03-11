@@ -40,8 +40,18 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void createAddInsulinActivity(View v) {
+    public void createInsulinActivity(View v) {
         Intent intent = new Intent(this, AddInsulinActivity.class);
+        startActivity(intent);
+    }
+
+    public void createGlucoseActivity(View v) {
+        Intent intent = new Intent(this, AddGlucoseActivity.class);
+        startActivity(intent);
+    }
+
+    public void createMedicationActivity(View v) {
+        Intent intent = new Intent(this, AddMedicationActivity.class);
         startActivity(intent);
     }
 }

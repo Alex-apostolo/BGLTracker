@@ -58,6 +58,7 @@
             android:id="@+id/fab_menu_medication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="createMedicationActivity"
             android:src="@drawable/ic_medication"
             fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_colorPressed="@color/colorPrimary"
@@ -68,17 +69,18 @@
             android:id="@+id/fab_menu_glucose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="createGlucoseActivity"
             android:src="@drawable/ic_glucose"
             fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_colorPressed="@color/colorPrimary"
-            fab:fab_label="Glucose"
+            fab:fab_label="Glucose Level"
             fab:fab_size="mini" />
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/fab_menu_insulin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="createAddInsulinActivity"
+            android:onClick="createInsulinActivity"
             android:src="@drawable/ic_insulin"
             fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_colorPressed="@color/colorPrimary"

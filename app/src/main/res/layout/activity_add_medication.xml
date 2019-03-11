@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddMedicationActivity">
+    tools:context=".AddMedicationActivity"
+    android:columnCount="2"
+    android:rowCount="2"
+    >
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="Hellloooooo" />
+
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:background="@android:color/holo_green_dark"
+        android:gravity="center"
+        android:text="Hellloooooo" />
+
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:background="@android:color/holo_orange_dark"
+        android:gravity="center"
+        android:text="Hellloooooo" />
+
+    <TextView
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:background="@android:color/darker_gray"
+        android:gravity="center"
+        android:text="Hellloooooo" />
+</GridLayout>
