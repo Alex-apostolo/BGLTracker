@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity {
         CustomRowData secondRow = new CustomRowData("Glucose", "lol mmlg", LocalDate.of(2018,12,10), LocalTime.of(20,20));
         CustomRowData[] myData = {firstRow,secondRow};
         ListAdapter adapter = new CustomAdapter(this, myData);
-        ListView BGLlist = findViewById(R.id.BGLlist);
-        BGLlist.setAdapter(adapter);
-        BGLlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ListView entryList = findViewById(R.id.entry_list);
+        entryList.setAdapter(adapter);
+        entryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 

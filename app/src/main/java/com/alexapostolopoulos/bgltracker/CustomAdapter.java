@@ -20,9 +20,9 @@ public class CustomAdapter extends ArrayAdapter<CustomRowData> {
 
         CustomRowData rowData = getItem(position);
 
-        TextView title = customView.findViewById(R.id.title1);
+        TextView title = customView.findViewById(R.id.title);
         TextView subtitle = customView.findViewById(R.id.subtitle);
-        TextView date = customView.findViewById(R.id.date);
+        TextView date = customView.findViewById(R.id.date_inputField);
         TextView time = customView.findViewById(R.id.time);
 
         title.setText(rowData.getTitle());

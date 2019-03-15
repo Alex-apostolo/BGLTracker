@@ -8,7 +8,7 @@
     tools:context=".AddGlucoseActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/sugarCon_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -21,7 +21,7 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/sugarCon_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -31,11 +31,10 @@
         android:gravity="center_vertical"
         android:inputType="number"
         android:textColor="@android:color/black"
-        android:textColorHighlight="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/unit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -45,7 +44,7 @@
         android:text="mmol/L" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -58,7 +57,7 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/date_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -68,11 +67,10 @@
         android:gravity="center_vertical"
         android:inputType="date"
         android:textColor="@android:color/black"
-        android:textColorHighlight="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/time_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -82,11 +80,10 @@
         android:gravity="center_vertical"
         android:inputType="time"
         android:textColor="@android:color/black"
-        android:textColorHighlight="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/note_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -99,7 +96,7 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/notes_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1.8"
@@ -111,6 +108,5 @@
         android:gravity="top|left"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
-        android:textColorHighlight="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 </GridLayout>

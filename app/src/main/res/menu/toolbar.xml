@@ -4,45 +4,45 @@
     <item
         android:id="@+id/filter"
         android:icon="@drawable/ic_icons8_filter_filled_100"
-        android:title="@string/menu_filter"
+        android:title="@string/filter"
         app:showAsAction="always">
         <menu>
             <item
                 android:id="@+id/menu_filter_all"
-                android:title="@string/menu_filter_all" />
+                android:title="@string/filter_all" />
             <item
-                android:id="@string/menu_filter_glucose"
-                android:title="@string/menu_filter_glucose" />
+                android:id="@string/filter_glucose"
+                android:title="@string/filter_glucose" />
             <item
                 android:id="@+id/menu_filter_insulin"
-                android:title="@string/menu_filter_insulin" />
+                android:title="@string/filter_insulin" />
             <item
                 android:id="@+id/menu_filter_medication"
-                android:title="@string/menu_filter_medication" />
+                android:title="@string/filter_medication" />
         </menu>
     </item>
 
 
     <item android:id="@+id/sort"
-        android:title="@string/menu_sort"
+        android:title="@string/sort"
         android:icon="@drawable/ic_sort_black_24dp"
         app:showAsAction="always">
         <menu>
             <item
                 android:id="@+id/SortByLastDay"
-                android:title="@string/menu_sort_lastDay" />
+                android:title="@string/sort_lastDay" />
             <item
                 android:id="@+id/SortByLastWeek"
-                android:title="@string/menu_sort_lastWeek" />
+                android:title="@string/sort_lastWeek" />
             <item
                 android:id="@+id/SelectDayRange"
-                android:title="@string/menu_sort_SelectDateRange" />
+                android:title="@string/sort_SelectDateRange" />
         </menu>
     </item>
 
     <item
         android:id="@+id/more_vertical"
-        android:title="@string/menu_more_vert"
+        android:title="@string/more_vert"
         android:icon="@drawable/ic_more_vert_black_24dp"
         app:showAsAction="always"/>
 </menu>

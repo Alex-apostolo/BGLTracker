@@ -3,100 +3,118 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:theme="@style/CustomTheme"
-    android:useDefaultMargins="true"
+    android:layout_height="350dp"
+    android:columnCount="2"
     tools:context=".AddInsulinActivity">
 
     <TextView
-        android:id="@+id/insulinText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Type Of Insulin"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="18sp" />
+        android:id="@+id/Insulin_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Insulin"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/insulin_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:inputType="number"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/insulinUnit_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="mmol/L" />
 
     <Spinner
-        android:id="@+id/spinner4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="1"
-        android:layout_column="0" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="0"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:id="@+id/typeOfInsulin_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="2"
-        android:layout_column="1"
-        android:text="TextView" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="3"
-        android:layout_column="0"
-        android:text="TextView" />
-
-    <Spinner
-        android:id="@+id/spinner6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="4"
-        android:layout_column="0" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="5"
-        android:layout_column="0"
-        android:text="TextView" />
+        android:id="@+id/dateTime_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Date and Time"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/editText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="0"
+        android:id="@+id/date_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
         android:ems="10"
-        android:inputType="date" />
+        android:gravity="center_vertical"
+        android:inputType="date"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
 
     <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="6"
-        android:layout_column="1"
+        android:id="@+id/time_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_marginRight="10dp"
         android:ems="10"
-        android:inputType="time" />
+        android:gravity="center_vertical"
+        android:inputType="time"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="7"
-        android:layout_column="0"
-        android:text="TextView" />
+        android:id="@+id/notes_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Notes"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_row="8"
-        android:layout_column="0"
+        android:id="@+id/note_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1.8"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
-        android:inputType="textMultiLine" />
-
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
 </GridLayout>
