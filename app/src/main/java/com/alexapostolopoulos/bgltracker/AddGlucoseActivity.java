@@ -17,7 +17,7 @@ public class AddGlucoseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_glucose);
         EditText date = findViewById(R.id.date_inputField);
-        EditText time = findViewById(R.id.time);
+        EditText time = findViewById(R.id.time_inputField);
         date.setText(LocalDate.now().toString());
         time.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")));
     }
@@ -25,12 +25,5 @@ public class AddGlucoseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar_add,menu);
         return true;
-    }
-
-    public void saveChanges(MenuItem menuItem) {
-        EditText date = findViewById(R.id.date_inputField);
-        EditText time = findViewById(R.id.time_inputField);
-        EditText sugarConcentration = findViewById(R.id.sugarCon_inputField);
-        EditText notes = findViewById(R.id.note_inputField);
     }
 }
