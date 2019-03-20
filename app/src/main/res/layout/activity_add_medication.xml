@@ -3,109 +3,128 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="3"
+    android:layout_height="450dp"
+    android:columnCount="2"
     tools:context=".AddMedicationActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/addMedication_name_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
-        android:layout_columnSpan="3"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:text="TextView" />
+        android:layout_marginLeft="10dp"
+        android:text="Name"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/addMedication_name_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/addMedication_dosage_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:text="Dosage"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/addMedication_dosage_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="3"
-        android:layout_columnWeight="1" />
-
-    <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/addMedication_unit_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
-        android:text="TextView" />
+        android:layout_marginRight="10dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/addMedication_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:text="TextView" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Date and Time"
+        android:textAppearance="@style/CustomTextTitle" />
 
-    <TextView
-        android:id="@+id/textView4"
+    <EditText
+        android:id="@+id/addMedication_date_inputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:inputType="date"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
+
+    <EditText
+        android:id="@+id/addMedication_time_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
-        android:text="TextView" />
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:inputType="time"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
 
-    <EditText
-        android:id="@+id/editText"
+    <TextView
+        android:id="@+id/addMedication_note_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:ems="10"
-        android:inputType="number" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:text="TextView" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Notes"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/addMedication_notes_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
+        android:layout_rowWeight="1.8"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
-        android:inputType="date" />
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        android:textColor="@android:color/black"
+        android:textColorLink="@color/colorPrimary" />
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:ems="10"
-        android:inputType="time" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="3"
-        android:layout_columnWeight="1"
-        android:text="TextView" />
-
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="3"
-        android:layout_columnWeight="1"
-        android:ems="10"
-        android:inputType="textMultiLine" />
 </GridLayout>

@@ -9,14 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddMedicationActivity"
-            android:theme="@style/CustomTheme"></activity>
+        <activity
+            android:name=".AddMedicationActivity"
+            android:theme="@style/CustomTheme"
+            android:label="Medication"/>
         <activity
             android:name=".AddGlucoseActivity"
-            android:theme="@style/CustomTheme"/>
+            android:theme="@style/CustomTheme"
+            android:label="Glucose"/>
         <activity
             android:name=".AddInsulinActivity"
-            android:theme="@style/CustomTheme"/>
+            android:theme="@style/CustomTheme"
+            android:label="Insulin"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/CustomTheme">

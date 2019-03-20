@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:icon="@drawable/ic_check_black_24dp"
-        android:onClick="saveChanges"
         android:title="ApplyChanges"
         app:showAsAction="always" />
 </menu>

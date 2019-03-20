@@ -8,7 +8,7 @@
     tools:context=".AddInsulinActivity">
 
     <TextView
-        android:id="@+id/Insulin_textView"
+        android:id="@+id/addInsulin_insulin_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -17,11 +17,11 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="center_vertical"
-        android:text="Insulin"
+        android:text="Value"
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/insulin_inputField"
+        android:id="@+id/addInsulin_insulin_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -34,7 +34,7 @@
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/insulinUnit_textView"
+        android:id="@+id/addInsulin_insulinUnit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -44,7 +44,7 @@
         android:text="mmol/L" />
 
     <Spinner
-        android:id="@+id/typeOfInsulin_inputField"
+        android:id="@+id/addInsulin_typeOfInsulin_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -52,7 +52,7 @@
         android:layout_columnWeight="1" />
 
     <TextView
-        android:id="@+id/dateTime_textView"
+        android:id="@+id/addInsulin_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -65,7 +65,7 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/date_inputField"
+        android:id="@+id/addInsulin_date_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -78,7 +78,7 @@
         android:textColorLink="@color/colorPrimary" />
 
     <EditText
-        android:id="@+id/time_inputField"
+        android:id="@+id/addInsulin_time_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -91,7 +91,7 @@
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/notes_textView"
+        android:id="@+id/addInsulin_notes_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -104,7 +104,7 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/note_inputField"
+        android:id="@+id/addInsulin_note_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1.8"
