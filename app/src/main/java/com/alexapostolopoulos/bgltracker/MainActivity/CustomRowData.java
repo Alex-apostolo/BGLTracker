@@ -1,4 +1,4 @@
-package com.alexapostolopoulos.bgltracker;
+package com.alexapostolopoulos.bgltracker.MainActivity;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

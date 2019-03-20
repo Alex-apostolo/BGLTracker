@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".MainActivity.MainActivity"
+            android:theme="@style/CustomTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".AddPatientActivity"
             android:label="Patient"
             android:theme="@style/CustomTheme" />
@@ -25,15 +35,6 @@
             android:name=".AddInsulinActivity"
             android:label="Insulin"
             android:theme="@style/CustomTheme" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/CustomTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.alexapostolopoulos.bgltracker;
+package com.alexapostolopoulos.bgltracker.MainActivity;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.alexapostolopoulos.bgltracker.MainActivity.CustomRowData;
+import com.alexapostolopoulos.bgltracker.R;
 
 public class CustomAdapter extends ArrayAdapter<CustomRowData> {
 
