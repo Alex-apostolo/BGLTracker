@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    tools:context=".PatientEntryActivity">
+
+    <TextView
+        android:id="@+id/patientName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
+        android:layout_columnWeight="1"
+        android:gravity="center"
+        android:text="Patient Name:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/nameInputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/ratioText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="center"
+        android:text="Carb : Insulin ratio:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/carbInsulinRatioInputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:ems="10"
+        android:gravity="bottom|center"
+        android:inputType="number"
+        android:text="carbs per unit"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/correctionDoseText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="center"
+        android:text="Correction dose ratio:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/correctionDoseInputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:ems="10"
+        android:gravity="bottom|center"
+        android:inputType="number"
+        android:text="units per mmol/L"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/lowThreshold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="center"
+        android:text="Low BGL threshold:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/lowThresholdInputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="bottom|center"
+        android:inputType="number"
+        android:text="BGL value"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/highThreshold"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="center"
+        android:text="High BGL threshold:"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/highThresholdInputField"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="bottom|center"
+        android:inputType="number"
+        android:text="BGL value"
+        android:textSize="24sp" />
+
+</GridLayout>

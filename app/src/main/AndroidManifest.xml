@@ -10,17 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".AddPatientActivity"
+            android:label="Patient"
+            android:theme="@style/CustomTheme" />
+        <activity
             android:name=".AddMedicationActivity"
-            android:theme="@style/CustomTheme"
-            android:label="Medication"/>
+            android:label="Medication"
+            android:theme="@style/CustomTheme" />
         <activity
             android:name=".AddGlucoseActivity"
-            android:theme="@style/CustomTheme"
-            android:label="Glucose"/>
+            android:label="Glucose"
+            android:theme="@style/CustomTheme" />
         <activity
             android:name=".AddInsulinActivity"
-            android:theme="@style/CustomTheme"
-            android:label="Insulin"/>
+            android:label="Insulin"
+            android:theme="@style/CustomTheme" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/CustomTheme">
