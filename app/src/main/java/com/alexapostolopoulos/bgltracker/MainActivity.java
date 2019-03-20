@@ -3,8 +3,8 @@ package com.alexapostolopoulos.bgltracker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +21,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.addPatient_button) {
+            Intent intent = new Intent(this, AddPatientActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void createInsulinActivity(View v) {
         Intent intent = new Intent(this, AddInsulinActivity.class);
         startActivity(intent);
@@ -32,11 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createMedicationActivity(View v) {
-        try {
-            Intent intent = new Intent(this, AddMedicationActivity.class);
-            startActivity(intent);
-        }
-        catch (Exception e) {
-            Log.d("cannot_open_medication",e.getMessage());}
+        Intent intent = new Intent(this, AddMedicationActivity.class);
+        startActivity(intent);
     }
 }
