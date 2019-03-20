@@ -3,14 +3,9 @@ package com.alexapostolopoulos.bgltracker;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,20 +13,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        CustomRowData firstRow = new CustomRowData("Insulin", "5670 mmlg", LocalDate.of(2018,12,20), LocalTime.of(20,20));
-        CustomRowData secondRow = new CustomRowData("Glucose", "lol mmlg", LocalDate.of(2018,12,10), LocalTime.of(20,20));
-        CustomRowData[] myData = {firstRow,secondRow};
-        ListAdapter adapter = new CustomAdapter(this, myData);
-        ListView entryList = findViewById(R.id.entry_list);
-        entryList.setAdapter(adapter);
-        entryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
     }
 
     @Override
@@ -51,7 +32,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createMedicationActivity(View v) {
-        Intent intent = new Intent(this, AddMedicationActivity.class);
-        startActivity(intent);
+        try {
+            Intent intent = new Intent(this, AddMedicationActivity.class);
+            startActivity(intent);
+        }
+        catch (Exception e) {
+            Log.d("cannot_open_medication",e.getMessage());}
     }
 }
