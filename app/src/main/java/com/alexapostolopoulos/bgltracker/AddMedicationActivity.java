@@ -1,9 +1,11 @@
 package com.alexapostolopoulos.bgltracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class AddMedicationActivity extends AppCompatActivity {
 
@@ -21,5 +23,10 @@ public class AddMedicationActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //Do when user presses check
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addPrescriptionActivity(View v) {
+        Intent intent = new Intent(this, AddPrescriptionActivity.class);
+        startActivity(intent);
     }
 }

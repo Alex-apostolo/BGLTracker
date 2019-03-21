@@ -5,30 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="2"
-    tools:context=".AddMedicationActivity">
+    android:id="@+id/addPrescr_gridLayout"
+    tools:context=".AddPrescriptionActivity">
 
     <TextView
-        android:id="@+id/addMedication_select_textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:gravity="center_vertical"
-        android:text="Select Prescription"
-        android:textAppearance="@style/CustomTextTitle" />
-
-    <ListView
-        android:id="@+id/addMedication_prescr_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="2.5"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="1" />
-
-    <Button
-        android:id="@+id/addMedication_addPresc_butn"
+        android:id="@+id/addPrescr_type_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -36,57 +17,68 @@
         android:layout_columnWeight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary"
-        android:onClick="addPrescriptionActivity"
-        android:text="Add Prescription" />
+        android:gravity="center_vertical"
+        android:text="Type"
+        android:textAppearance="@style/CustomTextTitle" />
 
-    <TextView
-        android:id="@+id/addMedication_name_textView"
+    <Spinner
+        android:id="@+id/addPrescr_type_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_marginLeft="10dp"
-        android:gravity="center_vertical"
-        android:text="Name"
-        android:textAppearance="@style/CustomTextTitle" />
+        android:layout_marginRight="10dp" />
 
-    <EditText
-        android:id="@+id/addMedication_name_inputField"
+    <TextView
+        android:id="@+id/addPrescr_freq_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:gravity="center_vertical"
+        android:text="Frequency"
+        android:textAppearance="@style/CustomTextTitle" />
 
-    <TextView
-        android:id="@+id/addMedication_dosage_textView"
+    <Spinner
+        android:id="@+id/addPrescr_freq_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_marginLeft="10dp"
-        android:gravity="center_vertical"
-        android:text="Dosage"
-        android:textAppearance="@style/CustomTextTitle" />
+        android:layout_marginRight="10dp" />
 
-    <EditText
-        android:id="@+id/addMedication_dosage_inputField"
+    <TextView
+        android:id="@+id/addPrescr_quantity_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Quantity"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/addPrescr_quantity_editText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/addMedication_dosageUnit_textView"
+        android:id="@+id/addPrescr_quantityUnit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -94,7 +86,7 @@
         android:gravity="center_vertical" />
 
     <TextView
-        android:id="@+id/addMedication_dateTime_textView"
+        android:id="@+id/addPrescr_advice_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -103,38 +95,21 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="center_vertical"
-        android:text="Date and Time"
+        android:text="Advice"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addMedication_date_inputField"
+    <Spinner
+        android:id="@+id/addPrescr_advice_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_marginLeft="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="date"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
-
-    <EditText
-        android:id="@+id/addMedication_time_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="time"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
+        android:layout_marginRight="10dp" />
 
     <TextView
-        android:id="@+id/addMedication_note_textView"
+        android:id="@+id/addPrescr_notes_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -147,18 +122,15 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/addMedication_notes_inputField"
+        android:id="@+id/addPrescr_notes_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_rowWeight="1.8"
+        android:layout_rowWeight="2"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:ems="10"
-        android:gravity="top|left"
-        android:inputType="textMultiLine"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
+        android:inputType="textMultiLine" />
 
 </GridLayout>

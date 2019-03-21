@@ -18,7 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddPatientActivity"
             android:label="Patient"
@@ -35,6 +34,11 @@
             android:name=".AddInsulinActivity"
             android:label="Insulin"
             android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".AddPrescriptionActivity"
+            android:label="Prescription"
+            android:theme="@style/CustomTheme"/>
+
     </application>
 
 </manifest>
