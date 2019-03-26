@@ -11,6 +11,7 @@ import com.alexapostolopoulos.bgltracker.AddGlucoseActivity;
 import com.alexapostolopoulos.bgltracker.AddInsulinActivity;
 import com.alexapostolopoulos.bgltracker.AddMedicationActivity;
 import com.alexapostolopoulos.bgltracker.AddPatientActivity;
+import com.alexapostolopoulos.bgltracker.BGLGraphActivity;
 import com.alexapostolopoulos.bgltracker.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,10 +31,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.addPatient_button:
+            {
                 Intent intent = new Intent(this, AddPatientActivity.class);
                 startActivity(intent);
                 break;
+            }
+            case R.id.BGLGraph_button:
+            {
+                Intent intent = new Intent(this, BGLGraphActivity.class);
+                startActivity(intent);
+                break;
+            }
             case R.id.filter:
                 //filter code goes here
                 break;
