@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="350dp"
+    android:layout_height="520dp"
     android:columnCount="2"
     tools:context=".AddInsulinActivity">
 
@@ -29,7 +29,7 @@
         android:layout_marginLeft="10dp"
         android:ems="10"
         android:gravity="center_vertical"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 
@@ -42,14 +42,6 @@
         android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="mmol/L" />
-
-    <Spinner
-        android:id="@+id/addInsulin_typeOfInsulin_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="1" />
 
     <TextView
         android:id="@+id/addInsulin_dateTime_textView"

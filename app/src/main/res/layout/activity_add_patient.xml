@@ -5,113 +5,169 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="2"
-    tools:context=".PatientEntryActivity">
+    tools:context=".AddPatientActivity">
 
     <TextView
-        android:id="@+id/patientName"
+        android:id="@+id/addPatient_name_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:gravity="center"
-        android:text="Patient Name:"
-        android:textSize="24sp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Patient Name"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/nameInputField"
+        android:id="@+id/addPatient_name_editText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/addPatient_CarbInsulin_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Carb / Insulin ratio"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/addPatient_CarbInsulin_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="24sp" />
+        android:gravity="center_vertical"
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/ratioText"
+        android:id="@+id/addPatient_CarbInsulinUnits_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_row="3"
+        android:layout_rowWeight="1"
+        android:layout_column="1"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="carbs per unit" />
+
+    <TextView
+        android:id="@+id/addPatient_correctionDose_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:gravity="center"
-        android:text="Carb : Insulin ratio:"
-        android:textSize="24sp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Correction dose ratio"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/carbInsulinRatioInputField"
+        android:id="@+id/addPatient_correctionDose_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:ems="10"
-        android:gravity="bottom|center"
-        android:inputType="number"
-        android:text="carbs per unit"
-        android:textSize="24sp" />
+        android:gravity="center_vertical"
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/correctionDoseText"
+        android:id="@+id/addPatient_correctionDoseUnits_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:gravity="center"
-        android:text="Correction dose ratio:"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/correctionDoseInputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:ems="10"
-        android:gravity="bottom|center"
-        android:inputType="number"
-        android:text="units per mmol/L"
-        android:textSize="24sp" />
+        android:gravity="center_vertical"
+        android:text="units per mmol/L" />
 
     <TextView
-        android:id="@+id/lowThreshold"
+        android:id="@+id/addPatient_highBGL_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:gravity="center"
-        android:text="Low BGL threshold:"
-        android:textSize="24sp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="High BGL Threshold"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/lowThresholdInputField"
+        android:id="@+id/addPatient_highBGL_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:gravity="bottom|center"
-        android:inputType="number"
-        android:text="BGL value"
-        android:textSize="24sp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/highThreshold"
+        android:id="@+id/addPatient_highBGLUnits_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:gravity="center"
-        android:text="High BGL threshold:"
-        android:textSize="24sp" />
+        android:gravity="center_vertical"
+        android:text="units" />
+
+    <TextView
+        android:id="@+id/addPatient_lowBGL_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Low BGL Threshold"
+        android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/highThresholdInputField"
+        android:id="@+id/addPatient_lowBGL_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:gravity="bottom|center"
-        android:inputType="number"
-        android:text="BGL value"
-        android:textSize="24sp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/addPatient_lowBGLUnits_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="units" />
 
 </GridLayout>
