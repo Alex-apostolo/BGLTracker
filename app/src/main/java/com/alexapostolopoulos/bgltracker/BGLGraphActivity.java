@@ -81,6 +81,12 @@ public class BGLGraphActivity extends AppCompatActivity {
         mScatterPlot.addSeries(xySeries);
 
         mScatterPlot.getGridLabelRenderer().setHumanRounding(false);
+
+        // the y bounds are always manual for second scale
+        mScatterPlot.getSecondScale().setMinY(0);
+        mScatterPlot.getSecondScale().setMaxY(100);
+
+        mScatterPlot.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
     }
     public final Activity getActivity (){return this;}
 }
