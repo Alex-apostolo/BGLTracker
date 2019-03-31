@@ -56,31 +56,15 @@
         android:text="Date and Time"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addInsulin_date_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
+    <include
+        android:id="@+id/addInsulin_dateTime_inputLayout"
+        layout="@layout/datetime_inputext"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="date"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
-
-    <EditText
-        android:id="@+id/addInsulin_time_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
         android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="time"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
+        android:layout_marginLeft="10dp"  />
+
 
     <TextView
         android:id="@+id/addInsulin_notes_textView"
