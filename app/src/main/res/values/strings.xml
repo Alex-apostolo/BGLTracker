@@ -4,6 +4,7 @@
     <!--Menu strings-->
     <string name="menu_filter">filter</string>
     <string name="menu_sort">sort</string>
+    <string name="menu_patient">patient</string>
     <string name="menu_more_vert">more</string>
 
     <!--Filter Strings-->
@@ -16,6 +17,10 @@
     <string name="menu_sort_lastDay">LastDay</string>
     <string name="menu_sort_lastWeek">LastWeek</string>
     <string name="menu_sort_SelectDateRange">SelectDateRange</string>
+
+    <!--Patient Strings-->
+    <string name="menu_patient_addPatient">AddPatient</string>
+    <string name="menu_patient_BGLGraph">BGLGraph</string>
 
     <string-array name="addPresc_type_array">
         <item>General</item>
