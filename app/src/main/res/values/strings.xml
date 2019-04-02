@@ -30,9 +30,8 @@
     <string-array name="addPresc_freq_array">
         <item>every X mins</item>
         <item>every X hours</item>
-        <item>X times a day</item>
-        <item>Once a week</item>
         <item>Once every X days</item>
+        <item>Once every X weeks</item>
     </string-array>
 
     <string-array name="addPresc_advice_array">

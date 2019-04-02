@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -38,22 +37,19 @@ public class AddPrescriptionActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch(parent.getItemAtPosition(position).toString()) {
                     case "General":
-//                        GridLayout layout = findViewById(R.id.addPrescr_gridLayout);
-//                        TextView nameView = new TextView(getBaseContext());
-//                        nameView.setText("Name");
-//                        nameView.setTextAppearance(R.style.CustomTextTitle);
-//                        EditText editName = new EditText(getBaseContext());
-//                        editName.setText("");
-//
-//                        GridLayout.LayoutParams params = new GridLayout.LayoutParams(layout.getLayoutParams());
-//                        params.height = 0;
-//                        params.width = 0;
-//                        params.rowSpec = GridLayout.spec(2, 2, 1f);
-//                        nameView.setLayoutParams(params);
-//                        params.columnSpec = GridLayout.spec(3, 2, 1f);
-//                        editName.setLayoutParams(params);
-//
-//                        layout.addView(nameView);
+                        GridLayout layout = findViewById(R.id.addPrescr_gridLayout);
+                        TextView nameView = new TextView(AddPrescriptionActivity.this);
+                        nameView.setText("Name");
+                        nameView.setTextAppearance(R.style.CustomTextTitle);
+
+                        GridLayout.LayoutParams params = (GridLayout.LayoutParams)layout.getLayoutParams();
+                        params.height = 0;
+                        params.width = 0;
+                        params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
+                        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
+
+                        layout.addView(nameView, params);
+                        setContentView(layout);
 //                        layout.addView(editName);
                         break;
                     case "Insulin":break;
@@ -75,7 +71,13 @@ public class AddPrescriptionActivity extends AppCompatActivity {
         freqSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                //Do when user presses frequency spinner
+                switch(position) {
+                    case 0: break;
+                    case 1: break;
+                    case 2: break;
+                    case 3: break;
+                }
             }
 
             @Override
@@ -93,7 +95,12 @@ public class AddPrescriptionActivity extends AppCompatActivity {
         adviceSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+                //Do when user presses advice spinner
+                switch(position) {
+                    case 0: break;
+                    case 1: break;
+                    case 2: break;
+                }
             }
 
             @Override

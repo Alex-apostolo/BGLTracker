@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:columnCount="2"
     tools:context=".AddMedicationActivity">
 
@@ -14,7 +15,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:text="Select Prescription"
         android:textAppearance="@style/CustomTextTitle" />
@@ -27,18 +27,36 @@
         android:layout_columnSpan="2"
         android:layout_columnWeight="1" />
 
-    <Button
-        android:id="@+id/addMedication_addPresc_butn"
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary"
-        android:onClick="addPrescriptionActivity"
-        android:text="Add Prescription" />
+        android:layout_columnWeight="1">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@+id/addMedication_addPresc_butn"
+            android:layout_toLeftOf="@+id/addMedication_addPresc_butn"
+            android:background="@drawable/ic_remove_black_24dp"
+            android:clickable="true" />
+
+        <Button
+            android:id="@+id/addMedication_addPresc_butn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_add_green_24dp"
+            android:clickable="true"
+            android:onClick="addPrescriptionActivity" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/addMedication_name_textView"
@@ -47,7 +65,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:text="Name"
         android:textAppearance="@style/CustomTextTitle" />
@@ -59,8 +76,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
@@ -70,7 +85,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:text="Dosage"
         android:textAppearance="@style/CustomTextTitle" />
@@ -82,7 +96,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="1"
         android:layout_columnWeight="1"
-        android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
@@ -90,6 +103,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
+        android:layout_columnSpan="1"
         android:layout_columnWeight="1"
         android:gravity="center_vertical" />
 
@@ -100,8 +114,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Date and Time"
         android:textAppearance="@style/CustomTextTitle" />
@@ -109,11 +121,9 @@
     <include
         android:id="@+id/addMedication_dateTime_inputLayout"
         layout="@layout/datetime_inputext"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
         android:layout_rowWeight="1"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"  />
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
 
     <TextView
         android:id="@+id/addMedication_note_textView"
@@ -122,8 +132,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -135,9 +143,6 @@
         android:layout_rowWeight="1.8"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:gravity="top|left"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"

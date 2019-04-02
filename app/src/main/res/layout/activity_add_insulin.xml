@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="520dp"
+    android:layout_margin="10dp"
     android:columnCount="2"
     tools:context=".AddInsulinActivity">
 
@@ -14,8 +15,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Value"
         android:textAppearance="@style/CustomTextTitle" />
@@ -26,8 +25,6 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
         android:gravity="center_vertical"
         android:inputType="numberDecimal"
         android:textColor="@android:color/black"
@@ -39,7 +36,6 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="mmol/L" />
 
@@ -50,8 +46,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Date and Time"
         android:textAppearance="@style/CustomTextTitle" />
@@ -59,11 +53,9 @@
     <include
         android:id="@+id/addInsulin_dateTime_inputLayout"
         layout="@layout/datetime_inputext"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
         android:layout_rowWeight="1"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"  />
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
 
 
     <TextView
@@ -73,8 +65,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -86,9 +76,6 @@
         android:layout_rowWeight="1.8"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:gravity="top|left"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"

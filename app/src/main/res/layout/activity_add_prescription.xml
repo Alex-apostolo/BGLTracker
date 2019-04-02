@@ -2,10 +2,11 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addPrescr_gridLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:columnCount="2"
-    android:id="@+id/addPrescr_gridLayout"
     tools:context=".AddPrescriptionActivity">
 
     <TextView
@@ -15,8 +16,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Type"
         android:textAppearance="@style/CustomTextTitle" />
@@ -27,9 +26,7 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_columnWeight="1" />
 
     <TextView
         android:id="@+id/addPrescr_freq_textView"
@@ -38,8 +35,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Frequency"
         android:textAppearance="@style/CustomTextTitle" />
@@ -50,9 +45,7 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_columnWeight="1" />
 
     <TextView
         android:id="@+id/addPrescr_quantity_textView"
@@ -61,8 +54,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Quantity"
         android:textAppearance="@style/CustomTextTitle" />
@@ -73,8 +64,6 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
@@ -92,8 +81,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Advice"
         android:textAppearance="@style/CustomTextTitle" />
@@ -104,9 +91,7 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_columnWeight="1" />
 
     <TextView
         android:id="@+id/addPrescr_notes_textView"
@@ -115,8 +100,6 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -128,9 +111,6 @@
         android:layout_rowWeight="2"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:inputType="textMultiLine" />
 
 </GridLayout>
