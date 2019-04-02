@@ -14,6 +14,7 @@
         android:gravity="center"
         android:inputType="number"
         android:text="dd"
+        android:maxLength="2"
         android:textColor="@color/colorTitle"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="57dp" />
@@ -36,6 +37,7 @@
         android:gravity="center"
         android:inputType="number"
         android:text="mm"
+        android:maxLength="2"
         android:textColor="@color/colorTitle"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="57dp" />
@@ -59,6 +61,7 @@
         android:gravity="center"
         android:inputType="number"
         android:text="yyyy"
+        android:maxLength="4"
         android:textColor="@color/colorTitle"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="57dp" />
@@ -80,6 +83,7 @@
         android:gravity="center"
         android:inputType="number"
         android:text="hh"
+        android:maxLength="2"
         android:textColor="@color/colorTitle"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="57dp" />
@@ -102,6 +106,7 @@
         android:gravity="center"
         android:inputType="number"
         android:text="mm"
+        android:maxLength="2"
         android:textColor="@color/colorTitle"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="57dp" />
@@ -124,6 +129,7 @@
         android:gravity="center"
         android:inputType="number"
         android:text="ss"
+        android:maxLength="2"
         android:textColor="@color/colorTitle"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="57dp" />
