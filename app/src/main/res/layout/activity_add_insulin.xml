@@ -9,6 +9,38 @@
     tools:context=".AddInsulinActivity">
 
     <TextView
+        android:id="@+id/addInsulin_select_textView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Select Insulin"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <Spinner
+        android:id="@+id/addInsulin_selectPresc_spinner2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
+
+    <Button
+        android:id="@+id/addInsulin_manageInsulin_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style"
+        android:onClick="showInsulinDialog"
+        android:text="Manage Insulin"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
         android:id="@+id/addInsulin_insulin_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"

@@ -19,44 +19,26 @@
         android:text="Select Prescription"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <ListView
-        android:id="@+id/addMedication_prescr_list"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="2.5"
-        android:layout_columnSpan="2"
-        android:layout_columnWeight="1" />
-
-    <RelativeLayout
+    <Spinner
+        android:id="@+id/addMedication_selectPresc_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1">
+        android:layout_columnWeight="1" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignTop="@+id/addMedication_addPresc_butn"
-            android:layout_toLeftOf="@+id/addMedication_addPresc_butn"
-            android:background="@drawable/ic_remove_black_24dp"
-            android:clickable="true" />
-
-        <Button
-            android:id="@+id/addMedication_addPresc_butn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_add_green_24dp"
-            android:clickable="true"
-            android:onClick="addPrescriptionActivity" />
-    </RelativeLayout>
+    <Button
+        android:id="@+id/addMedication_managePresc_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style"
+        android:onClick="showPrescDialog"
+        android:text="Manage Prescriptions"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/addMedication_name_textView"

@@ -19,7 +19,7 @@
     <string name="menu_sort_SelectDateRange">SelectDateRange</string>
 
     <!--Patient Strings-->
-    <string name="menu_patient_addPatient">AddPatient</string>
+    <string name="menu_patient_addPatient">ManagePatient</string>
     <string name="menu_patient_BGLGraph">BGLGraph</string>
 
     <string-array name="addPresc_type_array">
