@@ -9,7 +9,6 @@
     tools:context=".AddInsulinActivity">
 
     <TextView
-        android:id="@+id/addInsulin_select_textView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -41,7 +40,6 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:id="@+id/addInsulin_insulin_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -63,7 +61,6 @@
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/addInsulin_insulinUnit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -72,7 +69,6 @@
         android:text="mmol/L" />
 
     <TextView
-        android:id="@+id/addInsulin_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -84,14 +80,13 @@
 
     <include
         android:id="@+id/addInsulin_dateTime_inputLayout"
-        layout="@layout/datetime_inputext"
+        layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1" />
 
 
     <TextView
-        android:id="@+id/addInsulin_notes_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"

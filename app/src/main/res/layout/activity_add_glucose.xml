@@ -8,7 +8,6 @@
     tools:context=".AddGlucoseActivity">
 
     <TextView
-        android:id="@+id/addGlucose_sugarCon_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -30,7 +29,6 @@
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/addGlucose_unit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -39,7 +37,6 @@
         android:text="mmol/L" />
 
     <TextView
-        android:id="@+id/addGlucose_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -51,13 +48,12 @@
 
     <include
         android:id="@+id/addGlucose_dateTime_inputLayout"
-        layout="@layout/datetime_inputext"
+        layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1" />
 
     <TextView
-        android:id="@+id/addGlucose_note_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"

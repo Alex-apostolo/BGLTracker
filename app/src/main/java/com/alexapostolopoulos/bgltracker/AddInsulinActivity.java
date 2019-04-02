@@ -1,17 +1,18 @@
 package com.alexapostolopoulos.bgltracker;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class AddInsulinActivity extends AppCompatActivity {
 
     Dialog manageInsulinDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +31,25 @@ public class AddInsulinActivity extends AppCompatActivity {
     }
 
     public void showInsulinDialog(View v) {
-        manageInsulinDialog.setContentView(R.layout.manage_inputfields);
-        manageInsulinDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        manageInsulinDialog.setContentView(R.layout.manage_inputfield);
         manageInsulinDialog.show();
+
+        Button addBtn = manageInsulinDialog.findViewById(R.id.addButton);
+        Button rmvBtn = manageInsulinDialog.findViewById(R.id.removeButton);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddInsulinActivity.this, CustomInsulinActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        rmvBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //remove entry field
+            }
+        });
     }
 }

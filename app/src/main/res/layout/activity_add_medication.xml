@@ -9,7 +9,6 @@
     tools:context=".AddMedicationActivity">
 
     <TextView
-        android:id="@+id/addMedication_select_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -41,7 +40,6 @@
         android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:id="@+id/addMedication_name_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -61,7 +59,6 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/addMedication_dosage_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -90,7 +87,6 @@
         android:gravity="center_vertical" />
 
     <TextView
-        android:id="@+id/addMedication_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -102,13 +98,12 @@
 
     <include
         android:id="@+id/addMedication_dateTime_inputLayout"
-        layout="@layout/datetime_inputext"
+        layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1" />
 
     <TextView
-        android:id="@+id/addMedication_note_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"

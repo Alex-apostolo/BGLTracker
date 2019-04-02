@@ -2,17 +2,17 @@ package com.alexapostolopoulos.bgltracker;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 public class AddMedicationActivity extends AppCompatActivity {
 
     Dialog managePrescDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,13 +33,25 @@ public class AddMedicationActivity extends AppCompatActivity {
     }
 
     public void showPrescDialog(View v) {
-        managePrescDialog.setContentView(R.layout.manage_inputfields);
-        managePrescDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        managePrescDialog.setContentView(R.layout.manage_inputfield);
         managePrescDialog.show();
-    }
 
-    public void addPrescriptionActivity(View v) {
-        Intent intent = new Intent(this, AddPrescriptionActivity.class);
-        startActivity(intent);
+        Button addBtn = managePrescDialog.findViewById(R.id.addButton);
+        Button rmvBtn = managePrescDialog.findViewById(R.id.removeButton);
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddMedicationActivity.this, AddPrescriptionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        rmvBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //remove entry field
+            }
+        });
     }
 }

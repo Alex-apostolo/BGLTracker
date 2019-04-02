@@ -36,22 +36,7 @@ public class AddPrescriptionActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch(parent.getItemAtPosition(position).toString()) {
-                    case "General":
-//                        GridLayout layout = findViewById(R.id.addPrescr_gridLayout);
-//                        TextView nameView = new TextView(AddPrescriptionActivity.this);
-//                        nameView.setText("Name");
-//                        nameView.setTextAppearance(R.style.CustomTextTitle);
-//
-//                        GridLayout.LayoutParams params = (GridLayout.LayoutParams)layout.getLayoutParams();
-//                        params.height = 0;
-//                        params.width = 0;
-//                        params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
-//                        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1, 1f);
-//
-//                        layout.addView(nameView, params);
-//                        setContentView(layout);
-////                        layout.addView(editName);
-                        break;
+                    case "General":break;
                     case "Insulin":break;
                 }
             }
