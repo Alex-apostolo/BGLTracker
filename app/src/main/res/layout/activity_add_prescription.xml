@@ -2,21 +2,19 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addPrescr_gridLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:columnCount="2"
-    android:id="@+id/addPrescr_gridLayout"
     tools:context=".AddPrescriptionActivity">
 
     <TextView
-        android:id="@+id/addPrescr_type_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Type"
         android:textAppearance="@style/CustomTextTitle" />
@@ -27,19 +25,23 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
+
+    <LinearLayout
+        android:id="@+id/addPrescr_presc_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="2"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:orientation="vertical" />
 
     <TextView
-        android:id="@+id/addPrescr_freq_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Frequency"
         android:textAppearance="@style/CustomTextTitle" />
@@ -50,19 +52,41 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_columnWeight="1" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="right|center_vertical"
+            android:text="X = "
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/addPresc_X_editText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/textView2"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number" />
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/addPrescr_quantity_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Quantity"
         android:textAppearance="@style/CustomTextTitle" />
@@ -73,27 +97,23 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/addPrescr_quantityUnit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        android:text="unit" />
 
     <TextView
-        android:id="@+id/addPrescr_advice_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Advice"
         android:textAppearance="@style/CustomTextTitle" />
@@ -104,19 +124,14 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_columnWeight="1" />
 
     <TextView
-        android:id="@+id/addPrescr_notes_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -128,9 +143,7 @@
         android:layout_rowWeight="2"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
+        android:gravity="top"
         android:inputType="textMultiLine" />
 
 </GridLayout>

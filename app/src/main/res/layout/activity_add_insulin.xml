@@ -4,18 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="520dp"
+    android:layout_margin="10dp"
     android:columnCount="2"
     tools:context=".AddInsulinActivity">
 
     <TextView
-        android:id="@+id/addInsulin_insulin_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:text="Select Insulin"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <Spinner
+        android:id="@+id/addInsulin_selectPresc_spinner2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
+
+    <Button
+        android:id="@+id/addInsulin_manageInsulin_btn"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style"
+        android:onClick="showInsulinDialog"
+        android:text="Manage Insulin"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
         android:gravity="center_vertical"
         android:text="Value"
         android:textAppearance="@style/CustomTextTitle" />
@@ -26,71 +55,43 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
         android:gravity="center_vertical"
         android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/addInsulin_insulinUnit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="mmol/L" />
 
     <TextView
-        android:id="@+id/addInsulin_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Date and Time"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addInsulin_date_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <include
+        android:id="@+id/addInsulin_dateTime_inputLayout"
+        layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="date"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
 
-    <EditText
-        android:id="@+id/addInsulin_time_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="time"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/addInsulin_notes_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -102,10 +103,7 @@
         android:layout_rowWeight="1.8"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="top|left"
+        android:gravity="top"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />

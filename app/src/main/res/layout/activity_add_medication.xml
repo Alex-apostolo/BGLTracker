@@ -3,51 +3,48 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:columnCount="2"
     tools:context=".AddMedicationActivity">
 
     <TextView
-        android:id="@+id/addMedication_select_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:text="Select Prescription"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <ListView
-        android:id="@+id/addMedication_prescr_list"
+    <Spinner
+        android:id="@+id/addMedication_selectPresc_spinner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_rowWeight="2.5"
+        android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1" />
 
     <Button
-        android:id="@+id/addMedication_addPresc_butn"
+        android:id="@+id/addMedication_managePresc_btn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary"
-        android:onClick="addPrescriptionActivity"
-        android:text="Add Prescription" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style"
+        android:onClick="showPrescDialog"
+        android:text="Manage Prescriptions"
+        android:textColor="@color/colorPrimaryDark" />
 
     <TextView
-        android:id="@+id/addMedication_name_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:text="Name"
         android:textAppearance="@style/CustomTextTitle" />
@@ -59,89 +56,52 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/addMedication_dosage_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
         android:gravity="center_vertical"
         android:text="Dosage"
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/addMedication_dosage_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/addMedication_dosageUnit_textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:gravity="center_vertical" />
-
-    <TextView
-        android:id="@+id/addMedication_dateTime_textView"
+        android:id="@+id/addMedication_dosage_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
         android:gravity="center_vertical"
         android:text="Date and Time"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addMedication_date_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <include
+        android:id="@+id/addMedication_dateTime_inputLayout"
+        layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="date"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
-
-    <EditText
-        android:id="@+id/addMedication_time_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="time"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
+        />
 
     <TextView
-        android:id="@+id/addMedication_note_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -153,10 +113,7 @@
         android:layout_rowWeight="1.8"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="top|left"
+        android:gravity="top"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />

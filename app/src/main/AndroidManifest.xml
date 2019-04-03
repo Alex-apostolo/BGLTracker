@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BGLGraphActivity"></activity>
+        <activity android:name=".BGLGraphActivity" />
         <activity
             android:name=".MainActivity.MainActivity"
             android:theme="@style/CustomTheme">
@@ -38,6 +38,10 @@
         <activity
             android:name=".AddPrescriptionActivity"
             android:label="Prescription"
+            android:theme="@style/CustomTheme" />
+        <activity
+            android:name=".CustomInsulinActivity"
+            android:label="Insulin"
             android:theme="@style/CustomTheme" />
     </application>
 

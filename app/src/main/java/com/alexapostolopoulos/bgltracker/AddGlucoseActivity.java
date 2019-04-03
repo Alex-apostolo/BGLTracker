@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class AddGlucoseActivity extends AppCompatActivity {
 
@@ -11,6 +12,12 @@ public class AddGlucoseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_glucose);
+
+        //Glucose entry fields
+        EditText sugarConcentration = findViewById(R.id.addGlucose_sugarCon_inputField);
+        EditText dateTime = findViewById(R.id.addGlucose_dateTime_inputLayout);
+        EditText notes = findViewById(R.id.addGlucose_dateTime_inputLayout);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

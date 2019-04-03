@@ -4,19 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:columnCount="2"
     tools:context=".AddPatientActivity">
 
     <TextView
-        android:id="@+id/addPatient_name_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Patient Name"
         android:textAppearance="@style/CustomTextTitle" />
@@ -28,20 +25,15 @@
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/addPatient_CarbInsulin_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Carb / Insulin ratio"
         android:textAppearance="@style/CustomTextTitle" />
@@ -52,14 +44,10 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:gravity="center_vertical"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/addPatient_CarbInsulinUnits_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_row="3"
@@ -70,14 +58,11 @@
         android:text="carbs per unit" />
 
     <TextView
-        android:id="@+id/addPatient_correctionDose_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Correction dose ratio"
         android:textAppearance="@style/CustomTextTitle" />
@@ -88,14 +73,10 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
         android:gravity="center_vertical"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/addPatient_correctionDoseUnits_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -104,14 +85,11 @@
         android:text="units per mmol/L" />
 
     <TextView
-        android:id="@+id/addPatient_highBGL_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="High BGL Threshold"
         android:textAppearance="@style/CustomTextTitle" />
@@ -122,13 +100,10 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/addPatient_highBGLUnits_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -137,14 +112,11 @@
         android:text="units" />
 
     <TextView
-        android:id="@+id/addPatient_lowBGL_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Low BGL Threshold"
         android:textAppearance="@style/CustomTextTitle" />
@@ -155,14 +127,10 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
         android:gravity="center_vertical"
         android:inputType="numberDecimal" />
 
     <TextView
-        android:id="@+id/addPatient_lowBGLUnits_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"

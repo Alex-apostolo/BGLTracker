@@ -43,7 +43,7 @@
 
     <item android:id="@+id/patient"
         android:title="@string/menu_patient"
-        android:icon="@drawable/ic_account_circle_black_24dp"
+        android:icon="@drawable/ic_more_vert_black_24dp"
         app:showAsAction="always" >
         <menu>
             <item

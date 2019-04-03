@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="350dp"
+    android:layout_margin="10dp"
     android:columnCount="2"
     tools:context=".AddGlucoseActivity">
 
     <TextView
-        android:id="@+id/addGlucose_sugarCon_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Sugar Concentration"
         android:textAppearance="@style/CustomTextTitle" />
@@ -26,71 +23,42 @@
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
         android:gravity="center_vertical"
         android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
 
     <TextView
-        android:id="@+id/addGlucose_unit_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="mmol/L" />
 
     <TextView
-        android:id="@+id/addGlucose_dateTime_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Date and Time"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addGlucose_date_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <include
+        android:id="@+id/addGlucose_dateTime_inputLayout"
+        layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="date"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
-
-    <EditText
-        android:id="@+id/addGlucose_time_inputField"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnWeight="1"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="center_vertical"
-        android:inputType="time"
-        android:textColor="@android:color/black"
-        android:textColorLink="@color/colorPrimary" />
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
 
     <TextView
-        android:id="@+id/addGlucose_note_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:gravity="center_vertical"
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
@@ -102,10 +70,7 @@
         android:layout_rowWeight="1.8"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:ems="10"
-        android:gravity="top|left"
+        android:gravity="top"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
