@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class AddPrescriptionActivity extends AppCompatActivity {
 
