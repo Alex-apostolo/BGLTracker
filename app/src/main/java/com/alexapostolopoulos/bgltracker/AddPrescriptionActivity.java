@@ -17,9 +17,15 @@ public class AddPrescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_prescription);
+
+        //Prescription input fields
         configureTypeSpinner();
         configureFrequencySpinner();
         configureAdviceSpinner();
+        EditText x = findViewById(R.id.addPresc_X_editText);
+        EditText quantity = findViewById(R.id.addPrescr_quantity_editText);
+        EditText notes = findViewById(R.id.addPrescr_notes_editText);
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,7 +42,16 @@ public class AddPrescriptionActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch(parent.getItemAtPosition(position).toString()) {
-                    case "General":break;
+                    case "General":
+                        GridLayout layout = findViewById(R.id.addPrescr_gridLayout);
+                        View generalPresc = findViewById(R.id.addPrescr_genIns_view);
+//                        generalPresc = getLayoutInflater().inflate(R.layout.general_prescription,null);
+//
+//                        GridLayout.LayoutParams params = (GridLayout.LayoutParams)layout.getLayoutParams();
+//                        params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+//                        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED,1f);
+//                        generalPresc.setLayoutParams(params);
+                        break;
                     case "Insulin":break;
                 }
             }

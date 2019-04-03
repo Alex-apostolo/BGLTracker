@@ -18,13 +18,13 @@ public class CustomInsulinActivity extends AppCompatActivity {
         //Insulin name
         EditText insulinName = findViewById(R.id.customInsulin_name);
 
-        //Onset widgets
+        //Onset
         View onsetView = findViewById(R.id.customInsulin_onset);
         EditText onsetMax = onsetView.findViewById(R.id.customInsulin_max_editText);
         EditText onsetMin = onsetView.findViewById(R.id.customInsulin_min_editText);
         Spinner onsetUnitSpinner = onsetView.findViewById(R.id.customInsulin_unit_spinner);
 
-        //Peak widgets
+        //Peak
         View peakView = findViewById(R.id.customInsulin_peak);
         EditText peakMax = peakView.findViewById(R.id.customInsulin_max_editText);
         EditText peakMin = peakView.findViewById(R.id.customInsulin_min_editText);

@@ -12,7 +12,8 @@
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:text="Max"
-        android:textAppearance="@style/CustomTextTitle" />
+        android:textColor="@color/colorTitle"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/customInsulin_max_editText"
@@ -30,7 +31,8 @@
         android:layout_weight="1"
         android:gravity="center_vertical"
         android:text="Min"
-        android:textAppearance="@style/CustomTextTitle" />
+        android:textColor="@color/colorTitle"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/customInsulin_min_editText"

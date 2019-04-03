@@ -8,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+
 
 public class AddMedicationActivity extends AppCompatActivity {
 
@@ -18,6 +21,14 @@ public class AddMedicationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_medication);
         managePrescDialog = new Dialog(this);
+
+        //Medication input field
+        Spinner selectInsulin = findViewById(R.id.addMedication_selectPresc_spinner);
+        EditText insulinName = findViewById(R.id.addMedication_name_inputField);
+        EditText dosage = findViewById(R.id.addMedication_dosage_editText);
+        EditText dateTime = findViewById(R.id.addMedication_dateTime_inputLayout);
+        EditText notes = findViewById(R.id.addMedication_notes_inputField);
+
     }
 
     @Override

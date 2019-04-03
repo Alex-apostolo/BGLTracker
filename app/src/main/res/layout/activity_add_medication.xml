@@ -69,22 +69,14 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <EditText
-        android:id="@+id/addMedication_dosage_inputField"
+        android:id="@+id/addMedication_dosage_editText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
+        android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:inputType="textPersonName" />
-
-    <TextView
-        android:id="@+id/addMedication_dosageUnit_textView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="1"
-        android:layout_columnWeight="1"
-        android:gravity="center_vertical" />
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:layout_width="0dp"
@@ -101,7 +93,9 @@
         layout="@layout/datetime_inputfield"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
-        android:layout_columnWeight="1" />
+        android:layout_columnWeight="1"
+        android:layout_width=""
+        android:layout_height="" />
 
     <TextView
         android:layout_width="0dp"
@@ -120,7 +114,7 @@
         android:layout_rowWeight="1.8"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
-        android:gravity="top|left"
+        android:gravity="top"
         android:inputType="textMultiLine"
         android:textColor="@android:color/black"
         android:textColorLink="@color/colorPrimary" />
