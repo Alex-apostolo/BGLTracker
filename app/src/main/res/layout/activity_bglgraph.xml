@@ -7,26 +7,16 @@
     android:orientation="vertical"
     tools:context=".BGLGraphActivity">
 
-    <RelativeLayout
-        android:layout_weight=".1"
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/scatterPlot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="9" />
 
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/scatterPlot"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_weight=".9"
+    <Spinner
+        android:id="@+id/spinner1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></Spinner>
-    </RelativeLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"></Spinner>
 
 </LinearLayout>
