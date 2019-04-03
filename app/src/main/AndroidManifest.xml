@@ -40,7 +40,7 @@
             android:label="Prescription"
             android:theme="@style/CustomTheme" />
         <activity
-            android:name=".CustomInsulinActivity"
+            android:name=".AddCustomInsulinActivity"
             android:label="Insulin"
             android:theme="@style/CustomTheme" />
     </application>

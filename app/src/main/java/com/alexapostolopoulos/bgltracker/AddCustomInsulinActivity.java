@@ -8,12 +8,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-public class CustomInsulinActivity extends AppCompatActivity {
+public class AddCustomInsulinActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_insulin);
+        setContentView(R.layout.activity_add_custominsulin);
 
         //Insulin name
         EditText insulinName = findViewById(R.id.customInsulin_name);

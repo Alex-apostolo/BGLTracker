@@ -44,7 +44,7 @@ public class AddMedicationActivity extends AppCompatActivity {
     }
 
     public void showPrescDialog(View v) {
-        managePrescDialog.setContentView(R.layout.manage_inputfield);
+        managePrescDialog.setContentView(R.layout.manage_entries_inputfield);
         managePrescDialog.show();
 
         Button addBtn = managePrescDialog.findViewById(R.id.addButton);

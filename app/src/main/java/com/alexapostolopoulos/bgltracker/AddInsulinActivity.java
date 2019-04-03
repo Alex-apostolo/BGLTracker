@@ -40,7 +40,7 @@ public class AddInsulinActivity extends AppCompatActivity {
     }
 
     public void showInsulinDialog(View v) {
-        manageInsulinDialog.setContentView(R.layout.manage_inputfield);
+        manageInsulinDialog.setContentView(R.layout.manage_entries_inputfield);
         manageInsulinDialog.show();
 
         Button addBtn = manageInsulinDialog.findViewById(R.id.addButton);
@@ -49,7 +49,7 @@ public class AddInsulinActivity extends AppCompatActivity {
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddInsulinActivity.this, CustomInsulinActivity.class);
+                Intent intent = new Intent(AddInsulinActivity.this, AddCustomInsulinActivity.class);
                 startActivity(intent);
             }
         });
