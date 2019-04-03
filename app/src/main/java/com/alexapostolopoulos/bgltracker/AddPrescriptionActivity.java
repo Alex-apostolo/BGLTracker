@@ -2,13 +2,17 @@ package com.alexapostolopoulos.bgltracker;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class AddPrescriptionActivity extends AppCompatActivity {
 
@@ -40,18 +44,37 @@ public class AddPrescriptionActivity extends AppCompatActivity {
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                LinearLayout prescLayout = findViewById(R.id.addPrescr_presc_layout);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+                params.weight = 1;
+                params.gravity = Gravity.CENTER_VERTICAL;
+
                 switch(parent.getItemAtPosition(position).toString()) {
                     case "General":
-                        GridLayout layout = findViewById(R.id.addPrescr_gridLayout);
-                        View generalPresc = findViewById(R.id.addPrescr_genIns_view);
-//                        generalPresc = getLayoutInflater().inflate(R.layout.general_prescription,null);
-//
-//                        GridLayout.LayoutParams params = (GridLayout.LayoutParams)layout.getLayoutParams();
-//                        params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-//                        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED,1f);
-//                        generalPresc.setLayoutParams(params);
+                        prescLayout.removeAllViews();
+                        TextView nameTextView = new TextView(AddPrescriptionActivity.this);
+                        EditText nameInput = new EditText(AddPrescriptionActivity.this);
+
+                        nameTextView.setText("Name");
+                        nameTextView.setTextAppearance(R.style.CustomTextTitle);
+                        prescLayout.addView(nameTextView, params);
+
+                        nameInput.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+                        prescLayout.addView(nameInput,params);
                         break;
-                    case "Insulin":break;
+
+                    case "Insulin":
+                        prescLayout.removeAllViews();
+                        TextView selectInsulinTextView = new TextView(AddPrescriptionActivity.this);
+                        Spinner insulinSpinner = new Spinner(AddPrescriptionActivity.this);
+
+                        selectInsulinTextView.setText("Select Insulin");
+                        selectInsulinTextView.setTextAppearance(R.style.CustomTextTitle);
+                        prescLayout.addView(selectInsulinTextView, params);
+
+                        //Set custom adapter to spinner before adding it to the view and also populate all its fields
+                        prescLayout.addView(insulinSpinner);
+                        break;
                 }
             }
 
