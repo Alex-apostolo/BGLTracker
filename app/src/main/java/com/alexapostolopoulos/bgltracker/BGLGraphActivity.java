@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.content.pm.ActivityInfo;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -71,8 +74,9 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     private void createScatterPlot(int MaxY,Date MaxX,int MinY,Date MinX)
     {
+        LinearLayout layout = findViewById(R.id.bglGraph_LinearLayout);
+        layout.removeView(mScatterPlot1);
 
-        mScatterPlot1.removeAllSeries();
         Calendar calendar=Calendar.getInstance();
         Log.d(TAG, "createScatterPlot: Creating scatter plot");
         xySeries=new PointsGraphSeries();
@@ -130,6 +134,11 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         mScatterPlot1.getSecondScale().setMaxY(100);
 
         mScatterPlot1.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);
+        params.weight = 9;
+
+        layout.addView(mScatterPlot1, params);
     }
 
     public final Activity getActivity (){return this;}
