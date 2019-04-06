@@ -3,21 +3,23 @@
     package="com.alexapostolopoulos.bgltracker">
 
     <application
+        android:name=".BGLMain"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".BGLGraphActivity" />
+        <activity android:name=".BGLGraphActivity"></activity>
+        <activity android:name=".LaunchPage">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivity.MainActivity"
             android:theme="@style/CustomTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".AddPatientActivity"
@@ -26,7 +28,9 @@
         <activity
             android:name=".AddMedicationActivity"
             android:label="Medication"
-            android:theme="@style/CustomTheme" />
+            android:theme="@style/CustomTheme">
+
+        </activity>
         <activity
             android:name=".AddGlucoseActivity"
             android:label="Glucose"
@@ -38,9 +42,11 @@
         <activity
             android:name=".AddPrescriptionActivity"
             android:label="Prescription"
-            android:theme="@style/CustomTheme" />
+            android:theme="@style/CustomTheme">
+
+        </activity>
         <activity
-            android:name=".AddCustomInsulinActivity"
+            android:name=".CustomInsulinActivity"
             android:label="Insulin"
             android:theme="@style/CustomTheme" />
     </application>

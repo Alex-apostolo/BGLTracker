@@ -13,19 +13,13 @@
     <string name="menu_filter_insulin">Insulin</string>
     <string name="menu_filter_medication">Medication</string>
 
-    <string-array name="timePeriods">
-        <item>Current year </item>
-        <item>Current month </item>
-        <item>Today </item>
-    </string-array>
-
     <!--Sort Strings-->
     <string name="menu_sort_lastDay">LastDay</string>
     <string name="menu_sort_lastWeek">LastWeek</string>
     <string name="menu_sort_SelectDateRange">SelectDateRange</string>
 
     <!--Patient Strings-->
-    <string name="menu_patient_addPatient">ManagePatient</string>
+    <string name="menu_patient_addPatient">AddPatient</string>
     <string name="menu_patient_BGLGraph">BGLGraph</string>
 
     <string-array name="addPresc_type_array">
@@ -36,8 +30,9 @@
     <string-array name="addPresc_freq_array">
         <item>every X mins</item>
         <item>every X hours</item>
+        <item>X times a day</item>
+        <item>Once a week</item>
         <item>Once every X days</item>
-        <item>Once every X weeks</item>
     </string-array>
 
     <string-array name="addPresc_advice_array">

@@ -10,16 +10,20 @@
         <menu>
             <item
                 android:id="@+id/menu_filter_all"
-                android:title="@string/menu_filter_all" />
+                android:title="@string/menu_filter_all"
+                android:onClick="filterAllClick"/>
             <item
                 android:id="@string/menu_filter_glucose"
-                android:title="@string/menu_filter_glucose" />
+                android:title="@string/menu_filter_glucose"
+                android:onClick="filterGlucoseClick"/>
             <item
                 android:id="@+id/menu_filter_insulin"
-                android:title="@string/menu_filter_insulin" />
+                android:title="@string/menu_filter_insulin"
+                android:onClick="filterInsulinClick"/>
             <item
                 android:id="@+id/menu_filter_medication"
-                android:title="@string/menu_filter_medication" />
+                android:title="@string/menu_filter_medication"
+                android:onClick="filterMedicationClick"/>
         </menu>
     </item>
 
@@ -31,10 +35,12 @@
         <menu>
             <item
                 android:id="@+id/SortByLastDay"
-                android:title="@string/menu_sort_lastDay" />
+                android:title="@string/menu_sort_lastDay"
+                android:onClick="LastDayClick"/>
             <item
                 android:id="@+id/SortByLastWeek"
-                android:title="@string/menu_sort_lastWeek" />
+                android:title="@string/menu_sort_lastWeek"
+                android:onClick="LastWeekClick"/>
             <item
                 android:id="@+id/SelectDayRange"
                 android:title="@string/menu_sort_SelectDateRange" />
@@ -43,15 +49,16 @@
 
     <item android:id="@+id/patient"
         android:title="@string/menu_patient"
-        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:icon="@drawable/ic_account_circle_black_24dp"
         app:showAsAction="always" >
         <menu>
             <item
                 android:id="@+id/addPatient_button"
-                android:title="@string/menu_patient_addPatient"/>
+                android:title="@string/menu_patient_addPatient"
+                android:onClick="addPatientClick"/>
             <item
                 android:id="@+id/BGLGraph_button"
-                android:title="@string/menu_patient_BGLGraph"/>
+                android:title="@string/menu_patient_BGLGraph" />
         </menu>
 
     </item>

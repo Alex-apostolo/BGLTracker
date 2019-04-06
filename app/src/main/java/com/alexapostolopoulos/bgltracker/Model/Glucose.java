@@ -1,41 +1,63 @@
 package com.alexapostolopoulos.bgltracker.Model;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Glucose {
+import com.alexapostolopoulos.bgltracker.BGLMain;
 
-    private int level;
-    private LocalDate date;
-    private LocalTime time;
+import java.util.Date;
 
-    public Glucose(int level, LocalDate date, LocalTime time) {
-        this.level = level;
-        this.date = date;
-        this.time = time;
+public class Glucose implements Parcelable{
+    private int id;
+    private float value;
+    private Date dateTime;
+    private String notes;
+
+    public static final Parcelable.Creator<Glucose> CREATOR = new Parcelable.Creator<Glucose>() {
+        public Glucose createFromParcel(Parcel in) {return new Glucose(in);}
+        public Glucose[] newArray(int size) {return new Glucose[size];}
+    };
+
+    public Glucose(int ID, float value,
+                   Date dateTime, String notes) {
+        this.id = ID;
+        this.value = value;
+        this.notes = notes;
+        this.dateTime = dateTime;
     }
 
-    public int getLevel() {
-        return level;
+    private Glucose(Parcel in)
+    {
+        try {
+            id = in.readInt();
+            value = in.readFloat();
+            dateTime = BGLMain.sqlDateFormat.parse(in.readString());
+            notes = in.readString();
+        }
+        catch (Exception e) {}
     }
 
-    public void setLevel(int level) {
-        this.level = level;
+    public void writeToParcel(Parcel dest, int flags)
+    {
+        dest.writeInt(id);
+        dest.writeFloat(value);
+        dest.writeString(BGLMain.sqlDateFormat.format(dateTime));
+        dest.writeString(notes);
     }
 
-    public LocalDate getDate() {
-        return date;
+    public int describeContents() {return 0;}
+
+    public int getID() {
+        return id;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public float getValue() {
+        return value;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public Date getDateTime() {
+        return dateTime;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
+    public String getNotes() { return notes; }
 }

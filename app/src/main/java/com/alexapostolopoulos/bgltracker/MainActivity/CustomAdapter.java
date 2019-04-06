@@ -13,13 +13,13 @@ import com.alexapostolopoulos.bgltracker.R;
 public class CustomAdapter extends ArrayAdapter<CustomRowData> {
 
     CustomAdapter(Context context, CustomRowData[] customRowData) {
-        super(context, R.layout.mainlist_customrow,customRowData);
+        super(context, R.layout.custom_row,customRowData);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
-        View customView = inflater.inflate(R.layout.mainlist_customrow, parent, false);
+        View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
         CustomRowData rowData = getItem(position);
 
