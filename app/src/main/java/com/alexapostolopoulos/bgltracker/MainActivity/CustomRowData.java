@@ -1,20 +1,25 @@
 package com.alexapostolopoulos.bgltracker.MainActivity;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Comparator;
+import java.util.Date;
 
-public class CustomRowData {
+public class CustomRowData implements Comparable<CustomRowData> {
 
     private String title;
     private String subtitle;
-    private LocalDate date;
-    private LocalTime time;
+    private Date dateTime;
+    private Object data;
 
-    public CustomRowData(String title, String subtitle, LocalDate date, LocalTime time) {
+    public CustomRowData(String title, String subtitle, Date date, Object data) {
         this.title = title;
         this.subtitle = subtitle;
-        this.date = date;
-        this.time = time;
+        this.dateTime = date;
+        this.data = data;
+    }
+
+    public int compareTo(CustomRowData row)
+    {
+        return (int)(row.getDate().getTime() - dateTime.getTime());
     }
 
     public String getTitle() {
@@ -33,19 +38,19 @@ public class CustomRowData {
         this.subtitle = subtitle;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public Object getData() {
+        return data;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setData(Object data) {
+        this.data = data;
     }
 
-    public LocalTime getTime() {
-        return time;
+    public Date getDate() {
+        return dateTime;
     }
 
-    public void setTime(LocalTime time) {
-        this.time = time;
+    public void setDate(Date dateTime) {
+        this.dateTime = dateTime;
     }
 }

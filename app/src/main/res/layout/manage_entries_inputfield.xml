@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_height="300dp"
     android:layout_margin="10dp"
     android:orientation="vertical">
 
     <ListView
+        android:id="@+id/prescriptionList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9" />
@@ -22,6 +23,7 @@
             android:layout_alignTop="@+id/addButton"
             android:layout_toLeftOf="@+id/addButton"
             android:background="@drawable/ic_remove_black_24dp"
+            android:onClick="removeItem"
             android:clickable="true" />
 
         <Button
@@ -35,6 +37,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/ic_add_green_24dp"
+            android:onClick="addItem"
             android:clickable="true" />
     </RelativeLayout>
 </LinearLayout>
