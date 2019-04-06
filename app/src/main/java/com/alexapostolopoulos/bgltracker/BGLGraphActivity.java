@@ -330,7 +330,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
 
         // set everything as they were before u dumb fak!
-        
+
         if(text.equals("Select period"))
         {
 
