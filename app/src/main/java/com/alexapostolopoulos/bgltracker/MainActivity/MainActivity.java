@@ -16,6 +16,7 @@ import com.alexapostolopoulos.bgltracker.AddGlucoseActivity;
 import com.alexapostolopoulos.bgltracker.AddInsulinActivity;
 import com.alexapostolopoulos.bgltracker.AddMedicationActivity;
 import com.alexapostolopoulos.bgltracker.AddPatientActivity;
+import com.alexapostolopoulos.bgltracker.BGLGraphActivity;
 import com.alexapostolopoulos.bgltracker.BGLMain;
 import com.alexapostolopoulos.bgltracker.Model.Glucose;
 import com.alexapostolopoulos.bgltracker.Model.Insulin;
@@ -110,6 +111,12 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent addPatient = new Intent(this,AddPatientActivity.class);
         startActivity(addPatient);
+    }
+
+    public void addBGLGraphClick(MenuItem item)
+    {
+        Intent addBGLGraph = new Intent(this, BGLGraphActivity.class);
+        startActivity(addBGLGraph);
     }
 
     public void filterAllClick(MenuItem item)

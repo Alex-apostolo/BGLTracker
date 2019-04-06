@@ -58,7 +58,7 @@
 
     <include
         android:id="@+id/addGlucose_dateTime_inputLayout"
-        layout="@layout/datetime_inputext"
+        layout="@layout/datetime_inputfield"
         android:layout_width="30dp"
         android:layout_height="10dp"
         android:layout_columnSpan="2"

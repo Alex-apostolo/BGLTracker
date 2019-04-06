@@ -59,7 +59,7 @@ public class AddInsulinActivity extends AppCompatActivity {
         dateField = new DateField(findViewById(R.id.addInsulin_dateTime_inputLayout));
         txtNotes = findViewById(R.id.addInsulin_note_inputField);
         manageInsulinDialog = new Dialog(this);
-        manageInsulinDialog.setContentView(R.layout.manage_inputfield);
+        manageInsulinDialog.setContentView(R.layout.manage_entries_inputfield);
         prescriptionList = manageInsulinDialog.findViewById(R.id.prescriptionList);
         listListener = new PrescriptionListListener();
         prescriptionList.setOnItemClickListener(listListener);

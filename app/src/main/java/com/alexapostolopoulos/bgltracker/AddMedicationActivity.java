@@ -53,7 +53,7 @@ public class AddMedicationActivity extends AppCompatActivity {
         txtDosage = findViewById(R.id.addMedication_dosage_editText);
         dateField = new DateField(findViewById(R.id.addMedication_dateTime_inputLayout));
         manageMedicationDialog = new Dialog(this);
-        manageMedicationDialog.setContentView(R.layout.manage_inputfield);
+        manageMedicationDialog.setContentView(R.layout.manage_entries_inputfield);
         txtNotes = findViewById(R.id.addMedication_notes_inputField);
         prescriptionSpinner = findViewById(R.id.addMedication_selectPresc_spinner);
         prescriptionList = manageMedicationDialog.findViewById(R.id.prescriptionList);

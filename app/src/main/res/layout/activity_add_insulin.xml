@@ -79,7 +79,7 @@
 
     <include
         android:id="@+id/addInsulin_dateTime_inputLayout"
-        layout="@layout/datetime_inputext"
+        layout="@layout/datetime_inputfield"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
