@@ -46,7 +46,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     //create graphview object
 
-    SimpleDateFormat sdf[]={new SimpleDateFormat("k:mm"),new SimpleDateFormat("k:m d/M/y")};
+    SimpleDateFormat sdf[]={new SimpleDateFormat("k:mm"),new SimpleDateFormat("d/M/y")};
 
     LinearLayout layout;
     int MaxY;
@@ -60,6 +60,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     List<Integer> bglVal;
     GraphView mScatterPlot;
     String text;
+    String formatShown="year";
     boolean graphBlank;
     Calendar calendar=Calendar.getInstance();
 
@@ -220,10 +221,13 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         mScatterPlot.getSecondScale().setMinY(0);
         mScatterPlot.getSecondScale().setMaxY(100);
         mScatterPlot.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
-        mScatterPlot.getGridLabelRenderer().setHumanRounding(true);
+        //mScatterPlot.getGridLabelRenderer().setHumanRounding(true);
 
         layout.addView(mScatterPlot,paramG);
-        changeXLabels(1);
+        if(formatShown.equals("year"))
+            changeXLabels(1);
+        else
+            changeXLabels(0);
 
         //createScatterPlot();
 
@@ -320,9 +324,11 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
                     Toast.LENGTH_SHORT).show();
         }
         if (text.equals("Today")) {
-
-            changeXLabels(0);
-            calendar.set(calendar.YEAR,0,Calendar.DATE,0,0,0);
+            formatShown="days";
+            //changeXLabels(0);
+            calendar.set(calendar.HOUR_OF_DAY,0);
+            calendar.set(calendar.MINUTE,0);
+            calendar.set(calendar.SECOND,0);
 //            calendar.set(Calendar.MINUTE,0);
 //            calendar.set(Calendar.HOUR,0);
 //            calendar.set(Calendar.SECOND,0);
@@ -334,9 +340,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
             //xySeries.appendData(new DataPoint(dae2,50.0),true,53);
             //mScatterPlot1.addSeries(xySeries);
-            long d=MinX.getTime();
-            d=d+86400000;
-            MaxX=new Date(d);
+            calendar.add(calendar.DATE,1);
+            MaxX=calendar.getTime();
             //Date maxDate = calendar.getTime();
             /*Toast.makeText(parent.getContext(),
                     minDate+""+maxDate,
@@ -348,20 +353,29 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
             createScatterPlot();
         }
         else if (text.equals("Current year")) {
-
-            calendar.set(calendar.YEAR,0,0,0,0,0);
+            formatShown="year";
+            //changeXLabels(0);
+            calendar.set(calendar.MONTH,0);
+            calendar.set(calendar.DATE,0);
+            calendar.set(calendar.HOUR_OF_DAY,0);
+            calendar.set(calendar.MINUTE,0);
+            calendar.set(calendar.SECOND,0);
             MinX =  calendar.getTime();
-            calendar.set(calendar.YEAR+1,0,0,0,0,0);
+            calendar.add(calendar.YEAR,1);
             MaxX =  calendar.getTime();
 
             createScatterPlot();
             //createScatterPlot(150,maxDate,0,minDate);
         }
         else if (text.equals("Last 30 days")) {
-
-            calendar.set(calendar.YEAR,calendar.MONTH,0,0,0,0);
-            MinX = calendar.getTime();
-            calendar.add(calendar.DATE, 30);
+            formatShown="year";
+            //changeXLabels(0);
+            calendar.set(calendar.DATE,0);
+            calendar.set(calendar.HOUR_OF_DAY,0);
+            calendar.set(calendar.MINUTE,0);
+            calendar.set(calendar.SECOND,0);
+            MinX =  calendar.getTime();
+            calendar.add(calendar.MONTH,1);
             MaxX = calendar.getTime();
 
             createScatterPlot();
