@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.util.Log;
 import android.content.pm.ActivityInfo;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -17,7 +14,6 @@ import android.widget.Toast;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.DataPointInterface;
 import com.jjoe64.graphview.series.LineGraphSeries;
@@ -26,7 +22,6 @@ import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -40,9 +35,13 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     private static final String TAG="MainActivity";
     //ADD PointsGrapgSeries of DataPoint type
-    PointsGraphSeries<DataPoint> xySeries;
+    PointsGraphSeries<DataPoint> xySeriesInsulin;
 
-    LineGraphSeries<DataPoint> lineSeries;
+    LineGraphSeries<DataPoint> lineSeriesInsulin;
+
+    PointsGraphSeries<DataPoint> xySeriesBGL;
+
+    LineGraphSeries<DataPoint> lineSeriesBGL;
 
     //create graphview object
 
@@ -54,6 +53,12 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     Date MaxX;
     Date MinX;
     Hashtable<Date,Integer> dateValInsulin;
+    Hashtable<Date,Integer> dateValBGL;
+    Hashtable<Date,String> dateTypeInsulin;
+    Hashtable<Date,String> datePrescriptionN;
+    Hashtable<Date,String> dateNotes;
+
+    double ratio= 1.5;
     List<Date> datesInsulin;
     List<Date> datesBGL;
     List<Integer> insulinVal;
@@ -61,19 +66,23 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     GraphView mScatterPlot;
     String text;
     String formatShown="year";
-    boolean graphBlank;
-    Calendar calendar=Calendar.getInstance();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        graphBlank=true;
+        Calendar calendar=Calendar.getInstance();
 
 
-        calendar.set(2019,0,0);
+        calendar.set(calendar.MONTH,0);
+        calendar.set(calendar.DATE,0);
+        calendar.set(calendar.HOUR_OF_DAY,0);
+        calendar.set(calendar.MINUTE,0);
+        calendar.set(calendar.SECOND,0);
         MinX = calendar.getTime();
-        calendar.set(2020,0,0);
+        calendar.add(calendar.YEAR,1);
         MaxX = calendar.getTime();
         MaxY=150;
 
@@ -146,25 +155,46 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     public void getData()
     {
-
+        Date date;
         //getting the insulin and bgl from the "database"
 
         dateValInsulin=new Hashtable<>();
+        dateValBGL=new Hashtable<>();
         Calendar calendar=Calendar.getInstance();
         calendar.set(2019, 03, 01);
-        dateValInsulin.put(calendar.getTime(),40);
+        date=calendar.getTime();
+        dateValInsulin.put(date,40*3/2);
+        dateValBGL.put(date,60);
         calendar.set(2019, 01, 01);
-        dateValInsulin.put(calendar.getTime(),120);
+        date=calendar.getTime();
+        dateValInsulin.put(date,90*3/2);
+        dateValBGL.put(date,115);
         calendar.set(2019, 10, 01);
-        dateValInsulin.put(calendar.getTime(),110);
+        date=calendar.getTime();
+        dateValInsulin.put(date,100*3/2);
+        dateValBGL.put(date,150);
         calendar.set(2018, 11, 01);
-        dateValInsulin.put(calendar.getTime(),20);
+        date=calendar.getTime();
+        dateValInsulin.put(date,20*3/2);
+        dateValBGL.put(date,30);
         calendar.set(2018,01, 10);
-        dateValInsulin.put(calendar.getTime(),70);
+        date=calendar.getTime();
+        dateValInsulin.put(date,70*3/2);
+        dateValBGL.put(date,105);
 
         Enumeration datesInsulin=dateValInsulin.keys();
         this.datesInsulin=Collections.list(datesInsulin);//convert
         Collections.sort(this.datesInsulin, new Comparator<Date>(){
+
+            @Override
+            public int compare(Date o1, Date o2) {
+                return o1.compareTo(o2);
+            }
+        });
+
+        Enumeration datesBGL=dateValBGL.keys();
+        this.datesBGL=Collections.list(datesBGL);//convert
+        Collections.sort(this.datesBGL, new Comparator<Date>(){
 
             @Override
             public int compare(Date o1, Date o2) {
@@ -197,7 +227,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     {
         if(mScatterPlot!=null) layout.removeView(mScatterPlot);
 
-        graphBlank=true;
+
 
         mScatterPlot=new GraphView(this);
         mScatterPlot.setTitle("BGL graph");
@@ -235,29 +265,48 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     private void createScatterPlot()
     {
 
-        lineSeries= new LineGraphSeries<>(new DataPoint[]{});//as we always change the points on the graph
-        xySeries=new PointsGraphSeries();
+        lineSeriesInsulin= new LineGraphSeries<>(new DataPoint[]{});//as we always change the points on the graph
+        xySeriesInsulin=new PointsGraphSeries();
+        lineSeriesBGL= new LineGraphSeries<>(new DataPoint[]{});
+        xySeriesBGL=new PointsGraphSeries();
 
         updateGraph();//make the blank graph
-        graphBlank=false;
+
 
 
         for(int i = 0; i < datesInsulin.size(); i++){
             Date currDate=datesInsulin.get(i);
-            xySeries.appendData(new DataPoint(currDate,dateValInsulin.get(currDate)),true,180);
-            lineSeries.appendData(new DataPoint(currDate,dateValInsulin.get(currDate)),true,180);
+            xySeriesInsulin.appendData(new DataPoint(currDate,dateValInsulin.get(currDate)),true,180);
+            lineSeriesInsulin.appendData(new DataPoint(currDate,dateValInsulin.get(currDate)),true,180);
         }
-        //do the same for he insulinDates
-        mScatterPlot.addSeries(lineSeries);
-        mScatterPlot.addSeries(xySeries);
-        // do the same with BGL
+
+        mScatterPlot.addSeries(lineSeriesInsulin);
+        mScatterPlot.addSeries(xySeriesInsulin);
+
+        for(int i = 0; i < datesBGL.size(); i++){
+            Date currDate=datesBGL.get(i);
+            xySeriesBGL.appendData(new DataPoint(currDate,dateValBGL.get(currDate)),true,180);
+            lineSeriesBGL.appendData(new DataPoint(currDate,dateValBGL.get(currDate)),true,180);
+        }
+        lineSeriesBGL.setColor(Color.RED);
+        xySeriesBGL.setColor(Color.RED);
+        mScatterPlot.addSeries(lineSeriesBGL);
+        mScatterPlot.addSeries(xySeriesBGL);
 
 
         //SET listener for points
-        xySeries.setOnDataPointTapListener(new OnDataPointTapListener() {
+        xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
-            public void onTap(Series xySeries, DataPointInterface dataPoint) {
-                Toast.makeText(getActivity(), "Xander is the guy"+dataPoint, Toast.LENGTH_SHORT).show();
+            public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
+                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                Toast.makeText(getActivity(), "Xander is the guy "+dateFormatted, Toast.LENGTH_SHORT).show();
+            }
+        });
+        xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
+                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                Toast.makeText(getActivity(), "Xander is the guy2 "+dateFormatted, Toast.LENGTH_SHORT).show();
             }
         });
 
