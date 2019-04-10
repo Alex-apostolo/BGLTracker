@@ -384,6 +384,35 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
                         lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
                     }
                     mScatterPlot.addSeries(xySeriesInsulin);
+                    xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
+                        @Override
+                        public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
+//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                            insulinDialog = new Dialog(BGLGraphActivity.this);
+                            insulinDialog.setContentView(R.layout.bglgraph_insulin_dialog);
+                            TextView prescrType = insulinDialog.findViewById(R.id.BGLGraph_prescrType_textView);
+                            //date and time
+                            TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
+                            TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
+
+                            //assign values to the above views
+                            insulinDialog.show();
+                        }
+                    });
+                    xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
+                        @Override
+                        public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
+//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                            bglDialog = new Dialog(BGLGraphActivity.this);
+                            bglDialog.setContentView(R.layout.bglgraph_bgl_dialog);
+                            TextView sugarConc = bglDialog.findViewById(R.id.BGLGraph_glucose_sugarCon_inputField);
+                            //date and time
+                            TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
+
+                            //assign values to the above views
+                            insulinDialog.show();
+                        }
+                    });
                     //calendar.set(calendar.DATE,0);
 
                     listXYseriesInsulins.add(xySeriesInsulin);
@@ -564,35 +593,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
 
         //SET listener for points
-        xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
-            @Override
-            public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
-//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
-                insulinDialog = new Dialog(BGLGraphActivity.this);
-                insulinDialog.setContentView(R.layout.bglgraph_insulin_dialog);
-                TextView prescrType = insulinDialog.findViewById(R.id.BGLGraph_prescrType_textView);
-                //date and time
-                TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
-                TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
 
-                //assign values to the above views
-                insulinDialog.show();
-            }
-        });
-        xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
-            @Override
-            public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
-//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
-                bglDialog = new Dialog(BGLGraphActivity.this);
-                bglDialog.setContentView(R.layout.bglgraph_bgl_dialog);
-                TextView sugarConc = bglDialog.findViewById(R.id.BGLGraph_glucose_sugarCon_inputField);
-                //date and time
-                TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
 
-                //assign values to the above views
-                insulinDialog.show();
-            }
-        });
 
         //do the same for he insulinDates
     }
