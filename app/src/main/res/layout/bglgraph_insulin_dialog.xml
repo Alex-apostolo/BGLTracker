@@ -2,11 +2,11 @@
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="450dp"
+    android:layout_width="400dp"
+    android:layout_height="350dp"
     android:layout_margin="10dp"
     android:columnCount="2"
-    tools:context=".AddGlucoseActivity">
+    tools:context=".AddInsulinActivity">
 
     <TextView
         android:layout_width="0dp"
@@ -15,11 +15,30 @@
         android:layout_columnSpan="2"
         android:layout_columnWeight="1"
         android:gravity="center_vertical"
-        android:text="Sugar Concentration"
+        android:text="Prescription Type"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addGlucose_sugarCon_inputField"
+    <TextView
+        android:id="@+id/BGLGraph_prescrType_textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Value"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <TextView
+        android:id="@+id/BGLGraph_insulin_textView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -49,13 +68,14 @@
         android:textAppearance="@style/CustomTextTitle" />
 
     <include
-        android:id="@+id/addGlucose_dateTime_inputLayout"
-        layout="@layout/datetime_inputfield"
+        android:id="@+id/BGLGraph_dateTime_static_inputLayout"
+        layout="@layout/datetime_static_inputfield"
         android:layout_width="30dp"
         android:layout_height="10dp"
         android:layout_rowWeight="1"
         android:layout_columnSpan="2"
         android:layout_columnWeight="1" />
+
 
     <TextView
         android:layout_width="0dp"
@@ -67,8 +87,8 @@
         android:text="Notes"
         android:textAppearance="@style/CustomTextTitle" />
 
-    <EditText
-        android:id="@+id/addGlucose_notes_inputField"
+    <TextView
+        android:id="@+id/BGLGraph_note_inputField"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1.8"

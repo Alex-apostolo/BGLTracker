@@ -1,6 +1,7 @@
 package com.alexapostolopoulos.bgltracker;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -71,6 +73,9 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     GraphView mScatterPlot;
     String text;
     String formatShown="year";
+
+    Dialog insulinDialog;
+    Dialog bglDialog;
 
 
 
@@ -559,21 +564,33 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
 
         //SET listener for points
-        for(int i=0;i<listXYseriesInsulins.size();i++){
-            listXYseriesInsulins.get(i).setOnDataPointTapListener(new OnDataPointTapListener() {
-                @Override
-                public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
-                    String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
-                    Toast.makeText(getActivity(), "Xander is the guy "+dateFormatted, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+        xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
+//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                insulinDialog = new Dialog(BGLGraphActivity.this);
+                insulinDialog.setContentView(R.layout.bglgraph_insulin_dialog);
+                TextView prescrType = insulinDialog.findViewById(R.id.BGLGraph_prescrType_textView);
+                //date and time
+                TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
+                TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
 
+                //assign values to the above views
+                insulinDialog.show();
+            }
+        });
         xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
-                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
-                Toast.makeText(getActivity(), "Xander is the guy2 "+dateFormatted, Toast.LENGTH_SHORT).show();
+//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                bglDialog = new Dialog(BGLGraphActivity.this);
+                bglDialog.setContentView(R.layout.bglgraph_bgl_dialog);
+                TextView sugarConc = bglDialog.findViewById(R.id.BGLGraph_glucose_sugarCon_inputField);
+                //date and time
+                TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
+
+                //assign values to the above views
+                insulinDialog.show();
             }
         });
 
