@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alexapostolopoulos.bgltracker.MainActivity.CustomRowData;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -36,6 +37,7 @@ import java.util.List;
 public class BGLGraphActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private static final String TAG="MainActivity";
+    BGLMain appMain;
     //ADD PointsGrapgSeries of DataPoint type
     PointsGraphSeries<DataPoint> xySeriesInsulin;
 
@@ -52,7 +54,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     LinearLayout layout;
     int[] colours={Color.MAGENTA,Color.GRAY,Color.DKGRAY,Color.LTGRAY,Color.BLACK,Color.BLUE,Color.RED,Color.YELLOW,Color.GREEN,Color.CYAN};
-    int MaxY;
+    double MaxY;
     int MinY=0;
     Date MaxX;
     Date MinX;
@@ -64,7 +66,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     double bglAvg;
     double insulinAvg;
-    double ratio= 1.5;
+    int maxPlottedY;
+    double ratio;
     List<Date> datesInsulin;
     List<Date> datesBGL;
     List<String>prescriptions;
@@ -82,6 +85,11 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        appMain=(BGLMain) this.getApplication();
+        for(int i=0;i<appMain.insulinMasterList.size();i++)
+            System.out.println("   safasgas222222222222222222222222222"+appMain.insulinMasterList.get(i));
+
+        //ArrayList<CustomRowData>trol=getIntent().getExtras().getString("measurements");
 
         Calendar calendar=Calendar.getInstance();
 
@@ -94,8 +102,6 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         MinX = calendar.getTime();
         calendar.add(calendar.YEAR,1);
         MaxX = calendar.getTime();
-        MaxY=150;
-
 
         getData();
 
@@ -164,6 +170,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     }
     public void getData()
     {
+
+        //CustomRowData data =new CustomRowData();
         Date date;
         //getting the insulin and bgl from the "database"
         prescriptions=new ArrayList<>();
@@ -175,32 +183,32 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
         calendar.set(2019, 02, 05);
         date=calendar.getTime();
-        dateValInsulin.put(date,40*3/2);
+        dateValInsulin.put(date,60);
         dateTypeInsulin.put(date,"type1");
         dateValBGL.put(date,60);
 
         calendar.set(2019, 01, 01);
         date=calendar.getTime();
-        dateValInsulin.put(date,90*3/2);
+        dateValInsulin.put(date,115);
         dateTypeInsulin.put(date,"type1");
         dateValBGL.put(date,115);
 
         calendar.set(2019, 01, 01);
         calendar.set(calendar.HOUR_OF_DAY,1);
         date=calendar.getTime();
-        dateValInsulin.put(date,70*3/2);
+        dateValInsulin.put(date,115);
         dateTypeInsulin.put(date,"type1");
         dateValBGL.put(date,115);
 
         calendar.set(2019, 04, 01);
         date=calendar.getTime();
-        dateValInsulin.put(date,70*3/2);
+        dateValInsulin.put(date,115);
         dateTypeInsulin.put(date,"type4");
         dateValBGL.put(date,115);
 
         calendar.set(2019, 10, 01);
         date=calendar.getTime();
-        dateValInsulin.put(date,100*3/2);
+        dateValInsulin.put(date,40);
         dateTypeInsulin.put(date,"type2");
         dateValBGL.put(date,150);
 
@@ -260,15 +268,32 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
 
     }
-    public void plottingBGLData()
+
+
+    public void plottingInsulinBGLData()
     {
+
         int changerVal;
-        int sumTotal=0;
-        int counterTotal=0;
+
+        int sumTotalInsulin=0;
+        int counterTotalInsulin=0;
+        int sumTotalBGL=0;
+        int counterTotalBGL=0;
         int sum;
         int counter=0;
-        listXYseriesInsulins=new ArrayList<>();
+        maxPlottedY=0;
+        int yVal;
+
+        xySeriesInsulin=new PointsGraphSeries<>();
+        xySeriesInsulin.setColor(Color.MAGENTA);
         lineSeriesInsulin=new LineGraphSeries<>(new DataPoint[]{});
+        lineSeriesInsulin.setColor(Color.MAGENTA);
+
+        xySeriesBGL=new PointsGraphSeries<>();
+        xySeriesBGL.setColor(Color.RED);
+        lineSeriesBGL=new LineGraphSeries<>(new DataPoint[]{});
+        lineSeriesBGL.setColor(Color.RED);
+
         Date tempBeforeDate;
         Date tempAfterDate;
         Calendar calendar=Calendar.getInstance();
@@ -279,202 +304,195 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
         if(formatShown.equals("year")) {
             calendar.set(calendar.MONTH, 0);
-            calendar.set(calendar.DATE, 1);
-            System.out.println(calendar.getTime());
-            if (typesInsulin.size() < 3) {
-                changerVal = 1;
-            } else if (typesInsulin.size() < 6) {
-                changerVal = 2;
-
-            } else changerVal = 3;
-
-
-        }
-        else if(formatShown.equals("month"))
-        {
-
-        }
-        else;
-
-
-    }
-    public void plottingInsulinData()
-    {
-        int changerVal;
-        int sumTotal=0;
-        int counterTotal=0;
-        int sum;
-        int counter=0;
-        listXYseriesInsulins=new ArrayList<>();
-        lineSeriesInsulin=new LineGraphSeries<>(new DataPoint[]{});
-        Date tempBeforeDate;
-        Date tempAfterDate;
-        Calendar calendar=Calendar.getInstance();
-        calendar.set(calendar.HOUR_OF_DAY,0);
-        calendar.set(calendar.MINUTE,0);
-        calendar.set(calendar.SECOND,0);
-        calendar.set(calendar.MILLISECOND,0);
-
-        if(formatShown.equals("year"))
-        {
-            calendar.set(calendar.MONTH,0);
-            calendar.set(calendar.DATE,1);
-            System.out.println(calendar.getTime());
-            if(typesInsulin.size()<3) {
-                changerVal=1;
-            }
-            else if(typesInsulin.size()<6)
+            for (int k =10; k <= 20; k += 10)
             {
-                changerVal=2;
-
-            }
-            else changerVal=3;
-
-            for(int j=0;j<(12/changerVal);j++) {
-                tempBeforeDate=calendar.getTime();
-                calendar.add(calendar.MONTH,changerVal);
-                calendar.set(calendar.DATE,1);
-                tempAfterDate=calendar.getTime();
-                calendar.set(calendar.MONTH,changerVal*j);
-                for (int k=0;k<typesInsulin.size();k++) {
-                    System.out.println(typesInsulin.get(k));
-                    sum=0;
+                calendar.set(calendar.MONTH,0);
+                for (int j = 0; j < (12); j++) {
+                    calendar.set(calendar.DATE, 1);
+                    tempBeforeDate = calendar.getTime();
+                    calendar.add(calendar.MONTH, 1);
+                    tempAfterDate = calendar.getTime();
+                    calendar.set(calendar.MONTH, j);
+                    calendar.set(calendar.DATE, k);
+                    System.out.println("safasgasgas"+calendar.getTime()+k);
+                    sum = 0;
                     counter=0;
-                    PointsGraphSeries<DataPoint> xySeriesInsulin=new PointsGraphSeries();
-                    xySeriesInsulin.setColor(colours[k]);
+                    if(k==20) {
+                        for (int i = 0; i < datesInsulin.size(); i++) {
+                            if (datesInsulin.get(i).after(tempBeforeDate) &&
+                                    datesInsulin.get(i).before(tempAfterDate)) {
+                                counter++;
+                                sum = sum + dateValInsulin.get(datesInsulin.get(i));
+                            }
+                        }
+                    }else{
+                        for (int i = 0; i < datesBGL.size(); i++) {
 
-                    for(int i = 0; i < datesInsulin.size(); i++)
-                    {
-//                        if((dateTypeInsulin.get(datesInsulin.get(i)).equals(typesInsulin.get(k)) &&
-//                                datesInsulin.get(i).after(tempBeforeDate) &&
-//                                datesInsulin.get(i).before(tempAfterDate)))
-//                            System.out.println((dateTypeInsulin.get(datesInsulin.get(i)).equals(typesInsulin.get(k)) &&
-//                                    datesInsulin.get(i).after(tempBeforeDate) &&
-//                                    datesInsulin.get(i).before(tempAfterDate))+"   "+
-//                                            dateTypeInsulin.get(datesInsulin.get(i)).equals(typesInsulin.get(k))+"   "+
-//                                            typesInsulin.get(k)+"   "+datesInsulin.get(i)+"     "+
-//                                            datesInsulin.get(i).after(tempBeforeDate)+"     "+
-//                                            datesInsulin.get(i).before(tempAfterDate)+"      "+tempBeforeDate+"    "+
-//                                            tempAfterDate
-//                                    );
-                        if(dateTypeInsulin.get(datesInsulin.get(i)).equals(typesInsulin.get(k)) &&
-                        datesInsulin.get(i).after(tempBeforeDate) &&
-                                datesInsulin.get(i).before(tempAfterDate))
-                        {
+                            if (datesBGL.get(i).after(tempBeforeDate) &&
+                                    datesBGL.get(i).before(tempAfterDate)) {
+                                counter++;
+                                sum = sum + dateValBGL.get(datesBGL.get(i));
+                            }
 
-                            counter++;
-                            sum=sum+dateValInsulin.get(datesInsulin.get(i));
-                            System.out.println(typesInsulin.get(k)+" "+sum+" "+ datesInsulin.get(i));
-                            System.out.println(dateValInsulin.get(datesInsulin.get(i)));
+
                         }
                     }
-                    sumTotal=sumTotal+sum;
-                    counterTotal=counterTotal+counter;
-                    //calendar.set(calendar.MONTH,j*changerVal);
-                    System.out.println(calendar.getTime());
-                    //System.out.println(typesInsulin.get(k)+"vsdv"+calendar.getTime());
-
-                    System.out.println(calendar.getTime()+"  "+(j*changerVal));
-                    if(counter!=0) {
-                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), sum / counter), true, 180);
-                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), sum / counter), true, 180);
-                    }else
-                    {
-                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
-                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
+                    if(k==20){
+                        sumTotalInsulin = sumTotalInsulin + sum;
+                        counterTotalInsulin = counterTotalInsulin + counter;
+                    }else{
+                        sumTotalBGL = sumTotalBGL + sum;
+                        counterTotalBGL = counterTotalBGL + counter;
                     }
-                    mScatterPlot.addSeries(xySeriesInsulin);
-                    xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
-                        @Override
-                        public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
-//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
-                            insulinDialog = new Dialog(BGLGraphActivity.this);
-                            insulinDialog.setContentView(R.layout.bglgraph_insulin_dialog);
-                            TextView prescrType = insulinDialog.findViewById(R.id.BGLGraph_prescrType_textView);
-                            //date and time
-                            TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
-                            TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
 
-                            //assign values to the above views
-                            insulinDialog.show();
-                        }
-                    });
-                    xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
-                        @Override
-                        public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
-//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
-                            bglDialog = new Dialog(BGLGraphActivity.this);
-                            bglDialog.setContentView(R.layout.bglgraph_bgl_dialog);
-                            TextView sugarConc = bglDialog.findViewById(R.id.BGLGraph_glucose_sugarCon_inputField);
-                            //date and time
-                            TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
-
-                            //assign values to the above views
-                            insulinDialog.show();
-                        }
-                    });
-                    //calendar.set(calendar.DATE,0);
-
-                    listXYseriesInsulins.add(xySeriesInsulin);
-                    calendar.add(calendar.DATE,28*changerVal/typesInsulin.size());
+                    if (counter != 0) {
+                        yVal=sum/counter;
+                        if(yVal>maxPlottedY) maxPlottedY=yVal;
+                    }else yVal=0;
+                    if(k==20){
+                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+                    } else {
+                        xySeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+                        lineSeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 12); }
 
                 }
-                //calendar.add(calendar.MONTH,changerVal);
-                mScatterPlot.addSeries(lineSeriesInsulin);
+
+                if(k==20) {
+                    dialogBoxInsulinListener();
+                    mScatterPlot.addSeries(lineSeriesInsulin);
+                    mScatterPlot.addSeries(xySeriesInsulin);
+                    insulinAvg=sumTotalInsulin/counterTotalInsulin;
+
+                }else{
+                    dialogBoxBGLListener();
+                    mScatterPlot.addSeries(lineSeriesBGL);
+                    mScatterPlot.addSeries(xySeriesBGL);
+                    bglAvg=sumTotalBGL/counterTotalBGL;
+                }
+
             }
-            insulinAvg=sumTotal/counterTotal;
-
-
 
 
         }
         else if(formatShown.equals("month"))
         {
-            calendar.set(calendar.DATE,0);
-            if(typesInsulin.size()<3) {
-                changerVal=3;
-            }
-            else if(typesInsulin.size()<6)
+            calendar.add(calendar.DATE,-30);
+            Date beginingD=calendar.getTime();
+            System.out.println("ssgas"+calendar.getTime());
+            for(int k =1; k <= 2; k += 1)
             {
-                changerVal=4;
+                for(int j=0;j<31;j+=3)
+                {
 
-            }
-            else changerVal=6;
-
-            for(int j=0;j<(30/changerVal);j++) {
-                tempBeforeDate=calendar.getTime();
-                calendar.add(calendar.DATE,changerVal);
-                tempAfterDate=calendar.getTime();
-                for (int k=0;k<typesInsulin.size();k++) {
-                    sum=0;
-                    xySeriesInsulin=new PointsGraphSeries();
-                    xySeriesInsulin.setColor(colours[k]);
-                    for(int i = 0; i < datesInsulin.size(); i++)
-                    {
-                        if(dateTypeInsulin.get(datesInsulin.get(i)).equals(typesInsulin.get(i)) &&
-                                datesInsulin.get(i).after(tempBeforeDate) &&
-                                datesInsulin.get(i).before(tempAfterDate))
-                        {
-                            counter++;
-                            sum=sum+dateValInsulin.get(datesInsulin.get(i));
-                        }
-                    }
-                    calendar.add(calendar.DATE,-1*changerVal);
-                    calendar.add(calendar.DATE,changerVal/typesInsulin.size());
-                    if(counter!=0) {
-                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), sum / counter), true, 180);
-                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), sum / counter), true, 180);
-                    }else
-                    {
-                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
-                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
-                    }
-
-                    calendar.add(calendar.DATE,changerVal);
                 }
-                mScatterPlot.addSeries(xySeriesInsulin);
-                mScatterPlot.addSeries(lineSeriesInsulin);
             }
+//            for (int k =1; k <= 2; k += 1)
+//            {
+//
+//                for (int j = 0; j < (30); j+=3) {
+//                    calendar.set(calendar.DATE, j*3+1);
+//                    tempBeforeDate = calendar.getTime();
+//                    calendar.add(calendar.DATE, 3);
+//                    tempAfterDate = calendar.getTime();
+//                    calendar.set(calendar.DATE, j*3+1);
+//                    System.out.println("safasgasgas"+calendar.getTime()+k);
+//                    sum = 0;
+//                    counter=0;
+//                    if(k==20) {
+//                        for (int i = 0; i < datesInsulin.size(); i++) {
+//                            if (datesInsulin.get(i).after(tempBeforeDate) &&
+//                                    datesInsulin.get(i).before(tempAfterDate)) {
+//                                counter++;
+//                                sum = sum + dateValInsulin.get(datesInsulin.get(i));
+//                            }
+//                        }
+//                    }else{
+//                        for (int i = 0; i < datesBGL.size(); i++) {
+//
+//                            if (datesBGL.get(i).after(tempBeforeDate) &&
+//                                    datesBGL.get(i).before(tempAfterDate)) {
+//                                counter++;
+//                                sum = sum + dateValBGL.get(datesBGL.get(i));
+//                            }
+//
+//
+//                        }
+//                    }
+//                    if(k==20){
+//                        sumTotalInsulin = sumTotalInsulin + sum;
+//                        counterTotalInsulin = counterTotalInsulin + counter;
+//                    }else{
+//                        sumTotalBGL = sumTotalBGL + sum;
+//                        counterTotalBGL = counterTotalBGL + counter;
+//                    }
+//
+//                    if (counter != 0) {
+//                        yVal=sum/counter;
+//                        if(yVal>maxPlottedY) maxPlottedY=yVal;
+//                    }else yVal=0;
+//                    if(k==20){
+//                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+//                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+//                    } else {
+//                        xySeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+//                        lineSeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 12); }
+//
+//                }
+//
+//                if(k==20) {
+//                    dialogBoxInsulinListener();
+//                    mScatterPlot.addSeries(lineSeriesInsulin);
+//                    mScatterPlot.addSeries(xySeriesInsulin);
+//                    if(counterTotalInsulin!=0)
+//                        insulinAvg=sumTotalInsulin/counterTotalInsulin;
+//                    else insulinAvg=0;
+//
+//                }else{
+//                    dialogBoxBGLListener();
+//                    mScatterPlot.addSeries(lineSeriesBGL);
+//                    mScatterPlot.addSeries(xySeriesBGL);
+//                    if(counterTotalBGL!=0)
+//                        bglAvg=sumTotalBGL/counterTotalBGL;
+//                    else bglAvg=0;
+//                }
+//
+//            }
+
+//            for(int j=0;j<(30/changerVal);j++) {
+//                tempBeforeDate=calendar.getTime();
+//                calendar.add(calendar.DATE,changerVal);
+//                tempAfterDate=calendar.getTime();
+//                for (int k=0;k<typesInsulin.size();k++) {
+//                    sum=0;
+//                    xySeriesInsulin=new PointsGraphSeries();
+//                    xySeriesInsulin.setColor(colours[k]);
+//                    for(int i = 0; i < datesInsulin.size(); i++)
+//                    {
+//                        if(dateTypeInsulin.get(datesInsulin.get(i)).equals(typesInsulin.get(i)) &&
+//                                datesInsulin.get(i).after(tempBeforeDate) &&
+//                                datesInsulin.get(i).before(tempAfterDate))
+//                        {
+//                            counter++;
+//                            sum=sum+dateValInsulin.get(datesInsulin.get(i));
+//                        }
+//                    }
+//                    calendar.add(calendar.DATE,-1*changerVal);
+//                    calendar.add(calendar.DATE,changerVal/typesInsulin.size());
+//                    if(counter!=0) {
+//                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), sum / counter), true, 180);
+//                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), sum / counter), true, 180);
+//                    }else
+//                    {
+//                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
+//                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), 0), true, 180);
+//                    }
+//
+//                    calendar.add(calendar.DATE,changerVal);
+//                }
+//                mScatterPlot.addSeries(xySeriesInsulin);
+//                mScatterPlot.addSeries(lineSeriesInsulin);
+//            }
         }
         else
         {
@@ -505,11 +523,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
 
 
-    public void setBounds()
+    public void setBoundsX()
     {
-        mScatterPlot.getViewport().setMaxY(MaxY);
-        mScatterPlot.getViewport().setMinY(MinY);
-
         mScatterPlot.getViewport().setMaxX(MaxX.getTime());
         mScatterPlot.getViewport().setMinX(MinX.getTime());
     }
@@ -528,13 +543,13 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
 
         mScatterPlot=new GraphView(this);
-        mScatterPlot.setTitle("BGL graph");
+
 
         // set manual x bounds
         mScatterPlot.getViewport().setXAxisBoundsManual(true);
         //set manual y bounds
         mScatterPlot.getViewport().setYAxisBoundsManual(true);
-        setBounds();
+        setBoundsX();
 
         mScatterPlot.getGridLabelRenderer().setHorizontalLabelsAngle(110);//set angle to..
         mScatterPlot.getGridLabelRenderer().setNumHorizontalLabels(10); // only 16 because of the space
@@ -547,8 +562,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         );
         //get the second axis
         mScatterPlot.getSecondScale().setMinY(0);
-        mScatterPlot.getSecondScale().setMaxY(100);
-        mScatterPlot.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.RED);
+
+        mScatterPlot.getGridLabelRenderer().setVerticalLabelsSecondScaleColor(Color.MAGENTA);
         //mScatterPlot.getGridLabelRenderer().setHumanRounding(true);
 
         layout.addView(mScatterPlot,paramG);
@@ -560,17 +575,63 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         //createScatterPlot();
 
     }
+    public void dialogBoxInsulinListener() {
+        xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
+//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                insulinDialog = new Dialog(BGLGraphActivity.this);
+                insulinDialog.setContentView(R.layout.bglgraph_insulin_dialog);
+                TextView prescrType = insulinDialog.findViewById(R.id.BGLGraph_prescrType_textView);
+                //date and time
+                TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
+                TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
+
+                //assign values to the above views
+                insulinDialog.show();
+            }
+        });
+    }
+    public void dialogBoxBGLListener()
+    {
+        xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
+            @Override
+            public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
+//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                bglDialog = new Dialog(BGLGraphActivity.this);
+                bglDialog.setContentView(R.layout.bglgraph_bgl_dialog);
+                TextView sugarConc = bglDialog.findViewById(R.id.BGLGraph_glucose_sugarCon_inputField);
+                //date and time
+                TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
+
+                //assign values to the above views
+                bglDialog.show();
+            }
+        });
+    }
+
     private void createScatterPlot()
     {
-
+        int secAx;
 //        lineSeriesInsulin= new LineGraphSeries<>(new DataPoint[]{});//as we always change the points on the graph
 //        xySeriesInsulin=new PointsGraphSeries();
-        lineSeriesBGL= new LineGraphSeries<>(new DataPoint[]{});
-        xySeriesBGL=new PointsGraphSeries();
+
 
         updateGraph();//make the blank graph
 
-        plottingInsulinData();
+        plottingInsulinBGLData();
+        if(insulinAvg!=0)
+            ratio=bglAvg/insulinAvg;
+        else ratio=0;
+        MaxY= maxPlottedY;
+        mScatterPlot.getViewport().setMaxY(MaxY);
+        mScatterPlot.getGridLabelRenderer().setHumanRounding(false);
+        System.out.println(ratio);
+        if(ratio!=0) secAx= (int) (MaxY/ratio);
+        else secAx=0;
+        mScatterPlot.setTitle("BGL graph"+" ratio:"+Math.round(ratio*10.0)/10.0);
+        mScatterPlot.getSecondScale().setMaxY(secAx);
+
 
 //        for(int i = 0; i < datesInsulin.size(); i++){
 //            Date currDate=datesInsulin.get(i);
@@ -581,15 +642,15 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 //        mScatterPlot.addSeries(lineSeriesInsulin);
 //        mScatterPlot.addSeries(xySeriesInsulin);
 
-        for(int i = 0; i < datesBGL.size(); i++){
-            Date currDate=datesBGL.get(i);
-            xySeriesBGL.appendData(new DataPoint(currDate,dateValBGL.get(currDate)),true,180);
-            lineSeriesBGL.appendData(new DataPoint(currDate,dateValBGL.get(currDate)),true,180);
-        }
-        lineSeriesBGL.setColor(Color.RED);
-        xySeriesBGL.setColor(Color.RED);
-        mScatterPlot.addSeries(lineSeriesBGL);
-        mScatterPlot.addSeries(xySeriesBGL);
+//        for(int i = 0; i < datesBGL.size(); i++){
+//            Date currDate=datesBGL.get(i);
+//            xySeriesBGL.appendData(new DataPoint(currDate,dateValBGL.get(currDate)),true,180);
+//            lineSeriesBGL.appendData(new DataPoint(currDate,dateValBGL.get(currDate)),true,180);
+//        }
+//        lineSeriesBGL.setColor(Color.RED);
+//        xySeriesBGL.setColor(Color.RED);
+//        mScatterPlot.addSeries(lineSeriesBGL);
+//        mScatterPlot.addSeries(xySeriesBGL);
 
 
         //SET listener for points
@@ -718,6 +779,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
             //createScatterPlot(150, maxDate, 0, minDate);
         }
     }
+
     public void changeXLabels(final int indexFormat)
     {
         mScatterPlot.getGridLabelRenderer().setLabelFormatter(new DefaultLabelFormatter()

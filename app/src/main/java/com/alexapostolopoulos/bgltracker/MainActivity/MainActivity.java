@@ -1,7 +1,45 @@
 package com.alexapostolopoulos.bgltracker.MainActivity;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.content.pm.ActivityInfo;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.alexapostolopoulos.bgltracker.MainActivity.CustomRowData;
+import com.jjoe64.graphview.DefaultLabelFormatter;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+import com.jjoe64.graphview.series.Series;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.List;
+
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,8 +47,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alexapostolopoulos.bgltracker.AddGlucoseActivity;
 import com.alexapostolopoulos.bgltracker.AddInsulinActivity;
@@ -22,11 +65,24 @@ import com.alexapostolopoulos.bgltracker.Model.Glucose;
 import com.alexapostolopoulos.bgltracker.Model.Insulin;
 import com.alexapostolopoulos.bgltracker.Model.Medication;
 import com.alexapostolopoulos.bgltracker.R;
+import com.jjoe64.graphview.DefaultLabelFormatter;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.DataPointInterface;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.OnDataPointTapListener;
+import com.jjoe64.graphview.series.PointsGraphSeries;
+import com.jjoe64.graphview.series.Series;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -116,6 +172,12 @@ public class MainActivity extends AppCompatActivity {
     public void addBGLGraphClick(MenuItem item)
     {
         Intent addBGLGraph = new Intent(this, BGLGraphActivity.class);
+        System.out.println(" asfasfasgasg1211111111");
+        for(int i=0;i<measurements.size();i++)
+        {
+            System.out.println(" asfasfasgasg1211111111"+measurements.get(i).getData());
+        }
+        addBGLGraph.putExtra("measurements",measurements);
         startActivity(addBGLGraph);
     }
 
@@ -276,4 +338,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
+
 }
+
+
