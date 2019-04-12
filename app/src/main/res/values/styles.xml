@@ -9,7 +9,9 @@
     </style>
 
     <style name="CustomTextTitle" parent="android:TextAppearance.DeviceDefault">
-        <item name="android:textSize">17dp</item>
+        <item name="android:textSize">35dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">cursive</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
