@@ -48,6 +48,9 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
     LineGraphSeries<DataPoint> lineSeriesBGL;
 
+    LineGraphSeries<DataPoint> lineSeriesMin;
+    LineGraphSeries<DataPoint> lineSeriesMax;
+
     //create graphview object
 
     SimpleDateFormat sdf[]={new SimpleDateFormat("k:mm"),new SimpleDateFormat("d/M/y")};
@@ -58,6 +61,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     int MinY=0;
     Date MaxX;
     Date MinX;
+    int minGoal=30;
+    int maxGoal=100;
     Hashtable<Date,Integer> dateValInsulin;
     Hashtable<Date,Integer> dateValBGL;
     Hashtable<Date,String> dateTypeInsulin;
@@ -85,11 +90,6 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appMain=(BGLMain) this.getApplication();
-        for(int i=0;i<appMain.insulinMasterList.size();i++)
-            System.out.println("   safasgas222222222222222222222222222"+appMain.insulinMasterList.get(i));
-
-        //ArrayList<CustomRowData>trol=getIntent().getExtras().getString("measurements");
 
         Calendar calendar=Calendar.getInstance();
 
@@ -100,6 +100,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         calendar.set(calendar.MINUTE,0);
         calendar.set(calendar.SECOND,0);
         MinX = calendar.getTime();
+
         calendar.add(calendar.YEAR,1);
         MaxX = calendar.getTime();
 
@@ -146,7 +147,20 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         createScatterPlot();
+        lineSeriesMin=new LineGraphSeries<>(new DataPoint[]{});
+        lineSeriesMax=new LineGraphSeries<>(new DataPoint[]{});
+        lineSeriesMin.setColor(Color.RED);
+        lineSeriesMax.setColor(Color.RED);
+        lineSeriesMin.appendData(new DataPoint(MinX,minGoal),true,4);
+        lineSeriesMax.appendData(new DataPoint(MinX,maxGoal),true,4);
 
+
+        lineSeriesMin.appendData(new DataPoint(MaxX,minGoal),true,4);
+        lineSeriesMax.appendData(new DataPoint(MaxX,maxGoal),true,4);
+
+        System.out.println(""+MaxX+MinX+minGoal+maxGoal);
+        mScatterPlot.addSeries(lineSeriesMin);
+        mScatterPlot.addSeries(lineSeriesMax);
         // links the graphview to the layout xml
 //        mScatterPlot1=findViewById(R.id.scatterPlot);
 //        mScatterPlot1.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getActivity()));
@@ -170,6 +184,12 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     }
     public void getData()
     {
+        appMain=(BGLMain) this.getApplication();
+        for(int i=0;i<appMain.insulinMasterList.size();i++)
+            System.out.println("   safasgas222222222222222222222222222"+appMain.insulinMasterList.get(i));
+        System.out.println("hello");
+        float measurements=getIntent().getExtras().getFloat("measurements");
+        System.out.println(measurements);
 
         //CustomRowData data =new CustomRowData();
         Date date;
@@ -613,6 +633,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     private void createScatterPlot()
     {
         int secAx;
+
 //        lineSeriesInsulin= new LineGraphSeries<>(new DataPoint[]{});//as we always change the points on the graph
 //        xySeriesInsulin=new PointsGraphSeries();
 
@@ -750,6 +771,10 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         }
         else if (text.equals("Current year")) {
             formatShown="year";
+            lineSeriesMin=new LineGraphSeries<>(new DataPoint[]{});
+            lineSeriesMax=new LineGraphSeries<>(new DataPoint[]{});
+            lineSeriesMin.setColor(Color.RED);
+            lineSeriesMax.setColor(Color.RED);
             //changeXLabels(0);
             calendar.set(calendar.MONTH,0);
             calendar.set(calendar.DATE,0);
@@ -757,9 +782,20 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
             calendar.set(calendar.MINUTE,0);
             calendar.set(calendar.SECOND,0);
             MinX =  calendar.getTime();
+
+
+            lineSeriesMin.appendData(new DataPoint(MinX,minGoal),true,4);
+            lineSeriesMax.appendData(new DataPoint(MinX,maxGoal),true,4);
+
             calendar.add(calendar.YEAR,1);
             MaxX =  calendar.getTime();
 
+            lineSeriesMin.appendData(new DataPoint(MaxX,minGoal),true,4);
+            lineSeriesMax.appendData(new DataPoint(MaxX,maxGoal),true,4);
+
+            System.out.println(""+MaxX+MinX+minGoal+maxGoal);
+            mScatterPlot.addSeries(lineSeriesMin);
+            mScatterPlot.addSeries(lineSeriesMax);
             createScatterPlot();
             //createScatterPlot(150,maxDate,0,minDate);
         }

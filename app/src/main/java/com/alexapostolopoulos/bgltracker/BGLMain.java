@@ -29,7 +29,7 @@ public class BGLMain extends Application {
     {
         super.onCreate();
         populateDatabase();
-        //populateSample();
+        populateSample();
         initialiseArrInsulin();
     }
     public void populateDatabase()
@@ -88,31 +88,6 @@ public class BGLMain extends Application {
                 "FOREIGN KEY(PatientID) REFERENCES Patient(ID)," +
                 "FOREIGN KEY(PrescriptionID) REFERENCES Prescription(ID))");
     }
-
-    public static boolean chkFloat(String testVal)
-    {
-        int dpCount = 0;
-        for(char c : testVal.toCharArray())
-        {
-            if(c == '.')
-            {
-                if(dpCount == 0)
-                {
-                    dpCount++;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else if(c < 48 || c > 57)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public void populateSample()
     {
         Log.d("POPULATE","db is being populated with sample values");
@@ -141,13 +116,29 @@ public class BGLMain extends Application {
         row.put("Comments","Not as such, I can't stand radishes.");
         dbMain.insert("Prescription",null,row);*/
         ContentValues row = new ContentValues();
-        row.put("Name","Twenty two");
+        row.put("Name","Test 1");
         row.put("onsetMin",0.5);
         row.put("onsetMax",1);
         row.put("peakMin",2);
         row.put("peakMax",3);
         row.put("durMin",4);
         row.put("durMax",5);
+        dbMain.insert("TemplateInsulin",null,row);
+        row.put("Name","Test 2");
+        row.put("onsetMin",0.18);
+        row.put("onsetMax",0.5);
+        row.put("peakMin",1);
+        row.put("peakMax",1.5);
+        row.put("durMin",2);
+        row.put("durMax",3);
+        dbMain.insert("TemplateInsulin",null,row);
+        row.put("Name","Test 3");
+        row.put("onsetMin",1);
+        row.put("onsetMax",2);
+        row.put("peakMin",3);
+        row.put("peakMax",4);
+        row.put("durMin",5);
+        row.put("durMax",6);
         dbMain.insert("TemplateInsulin",null,row);
         /*row = new ContentValues();
         row.put("PatientID",1);
@@ -157,6 +148,74 @@ public class BGLMain extends Application {
         row.put("Comments","Peter");
         dbMain.insert("Insulin",null,row);*/
     }
+    public static boolean chkFloat(String testVal)
+    {
+        int dpCount = 0;
+        for(char c : testVal.toCharArray())
+        {
+            if(c == '.')
+            {
+                if(dpCount == 0)
+                {
+                    dpCount++;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if(c < 48 || c > 57)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+//    public void populateSample()
+//    {
+//        Log.d("POPULATE","db is being populated with sample values");
+//        /*ContentValues row = new ContentValues();
+//        row.put("PatientID",1);
+//        row.put("Type","Insulin");
+//        row.put("InsulinTemplateID",1);
+//        row.put("Name","Onion");
+//        row.put("Frequency",2);
+//        row.put("ExactIntervals",true);
+//        row.put("Quantity",3);
+//        row.put("Unit","IU");
+//        row.put("Advice",2);
+//        row.put("Comments","Take one onion once every two hours to ease the internal bleeding.");
+//        dbMain.insert("Prescription",null,row);
+//        row = new ContentValues();
+//        row.put("PatientID",1);
+//        row.put("Type","Insulin");
+//        row.put("InsulinTemplateID",1);
+//        row.put("Name","Radish");
+//        row.put("Frequency",3);
+//        row.put("ExactIntervals",true);
+//        row.put("Quantity",4);
+//        row.put("Unit","IU");
+//        row.put("Advice",1);
+//        row.put("Comments","Not as such, I can't stand radishes.");
+//        dbMain.insert("Prescription",null,row);*/
+//        ContentValues row = new ContentValues();
+//        row.put("Name","Twenty two");
+//        row.put("onsetMin",0.5);
+//        row.put("onsetMax",1);
+//        row.put("peakMin",2);
+//        row.put("peakMax",3);
+//        row.put("durMin",4);
+//        row.put("durMax",5);
+//        dbMain.insert("TemplateInsulin",null,row);
+//        /*row = new ContentValues();
+//        row.put("PatientID",1);
+//        row.put("PrescriptionID",-1);
+//        row.put("Dosage",12);
+//        row.put("Date","2019-03-14 17:06:14");
+//        row.put("Comments","Peter");
+//        dbMain.insert("Insulin",null,row);*/
+//    }
 
     public void initialiseArrInsulin() {
         try {

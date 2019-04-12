@@ -171,13 +171,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void addBGLGraphClick(MenuItem item)
     {
+        Calendar calendar=Calendar.getInstance();
+        calendar.set(calendar.MONTH,0);
+        calendar.set(calendar.DATE,1);
+        calendar.set(calendar.HOUR_OF_DAY,0);
+        calendar.set(calendar.MINUTE,0);
+        calendar.set(calendar.SECOND,0);
+        Date minDate=calendar.getTime();
+        calendar.set(calendar.MONTH,11);
+        calendar.set(calendar.DATE,31);
+        Date maxDate= calendar.getTime();
         Intent addBGLGraph = new Intent(this, BGLGraphActivity.class);
         System.out.println(" asfasfasgasg1211111111");
+        retrieveEntries(minDate,maxDate);
+        System.out.println(appMain.curPatient.getGlucoseWarningLower());
+        System.out.println(appMain.curPatient.getGlucoseWarningUpper());
         for(int i=0;i<measurements.size();i++)
         {
-            System.out.println(" asfasfasgasg1211111111"+measurements.get(i).getData());
+            System.out.println("hey");
+            System.out.println(measurements.get(i).getData());
+            if(measurements.get(i).getTitle().equals("Insulin"))
+            {
+                Insulin obj = (Insulin)measurements.get(i).getData();
+                System.out.println(obj.getDosage());
+                addBGLGraph.putExtra("measurements",obj.getDosage());
+            }
         }
-        addBGLGraph.putExtra("measurements",measurements);
+        //System.out.println(measurements.get(0));
+        //addBGLGraph.putExtra("measurements",measurements);
         startActivity(addBGLGraph);
     }
 
