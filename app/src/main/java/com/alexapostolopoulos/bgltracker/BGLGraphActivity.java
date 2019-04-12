@@ -61,10 +61,10 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     int MinY=0;
     Date MaxX;
     Date MinX;
-    int minGoal=30;
-    int maxGoal=100;
-    Hashtable<Date,Integer> dateValInsulin;
-    Hashtable<Date,Integer> dateValBGL;
+    float minGoal;
+    float maxGoal;
+    Hashtable<Date,Float> dateValInsulin;
+    Hashtable<Date,Float> dateValBGL;
     Hashtable<Date,String> dateTypeInsulin;
     Hashtable<Date,String> datePrescriptionN;
     Hashtable<Date,String> dateNotes;
@@ -73,10 +73,10 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     double insulinAvg;
     int maxPlottedY;
     double ratio;
-    List<Date> datesInsulin;
-    List<Date> datesBGL;
-    List<String>prescriptions;
-    List<String>typesInsulin;
+    ArrayList<Date> datesInsulin;
+    ArrayList<Date> datesBGL;
+    ArrayList<String>prescriptions;
+    ArrayList<String>typesInsulin;
 
     GraphView mScatterPlot;
     String text;
@@ -185,64 +185,43 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     public void getData()
     {
         appMain=(BGLMain) this.getApplication();
-        for(int i=0;i<appMain.insulinMasterList.size();i++)
-            System.out.println("   safasgas222222222222222222222222222"+appMain.insulinMasterList.get(i));
+//        for(int i=0;i<appMain.insulinMasterList.size();i++)
+//            System.out.println("   safasgas222222222222222222222222222"+appMain.insulinMasterList.get(i));
         System.out.println("hello");
-        float measurements=getIntent().getExtras().getFloat("measurements");
-        System.out.println(measurements);
+
+        float bglBounds[]=getIntent().getExtras().getFloatArray("BGLBounds");
+        minGoal=bglBounds[0];
+        maxGoal=bglBounds[1];
+
 
         //CustomRowData data =new CustomRowData();
         Date date;
         //getting the insulin and bgl from the "database"
-        prescriptions=new ArrayList<>();
-        typesInsulin=new ArrayList<>();
+        prescriptions=(ArrayList<String>) getIntent().getExtras().getSerializable("insulinTypes");
+        typesInsulin=(ArrayList<String>) getIntent().getExtras().getSerializable("allTypes");
+        datesBGL=(ArrayList<Date>) getIntent().getExtras().getSerializable("datesBGL");
+        ArrayList<Float> valuesInsulin=(ArrayList<Float>) getIntent().getExtras().getSerializable("valuesInsulin");
+        datesInsulin=(ArrayList<Date>) getIntent().getExtras().getSerializable("datesInsulin");
+        ArrayList<Float> valuesBGL=(ArrayList<Float>) getIntent().getExtras().getSerializable("valuesBGL");
+
+
         dateValInsulin=new Hashtable<>();
         dateTypeInsulin=new Hashtable<>();
         dateValBGL=new Hashtable<>();
-        Calendar calendar=Calendar.getInstance();
 
-        calendar.set(2019, 02, 05);
-        date=calendar.getTime();
-        dateValInsulin.put(date,60);
-        dateTypeInsulin.put(date,"type1");
-        dateValBGL.put(date,60);
-
-        calendar.set(2019, 01, 01);
-        date=calendar.getTime();
-        dateValInsulin.put(date,115);
-        dateTypeInsulin.put(date,"type1");
-        dateValBGL.put(date,115);
-
-        calendar.set(2019, 01, 01);
-        calendar.set(calendar.HOUR_OF_DAY,1);
-        date=calendar.getTime();
-        dateValInsulin.put(date,115);
-        dateTypeInsulin.put(date,"type1");
-        dateValBGL.put(date,115);
-
-        calendar.set(2019, 04, 01);
-        date=calendar.getTime();
-        dateValInsulin.put(date,115);
-        dateTypeInsulin.put(date,"type4");
-        dateValBGL.put(date,115);
-
-        calendar.set(2019, 10, 01);
-        date=calendar.getTime();
-        dateValInsulin.put(date,40);
-        dateTypeInsulin.put(date,"type2");
-        dateValBGL.put(date,150);
-
-        calendar.set(2018, 11, 01);
-        date=calendar.getTime();
-        dateValInsulin.put(date,20*3/2);
-        dateTypeInsulin.put(date,"type3");
-        dateValBGL.put(date,30);
-
-        calendar.set(2018,01, 10);
-        date=calendar.getTime();
-        dateValInsulin.put(date,70*3/2);
-        dateTypeInsulin.put(date,"type5");
-        dateValBGL.put(date,105);
+        if(datesBGL==null) datesBGL=new ArrayList<>();
+        if(datesInsulin==null) datesInsulin=new ArrayList<>();
+        for(int i=0;i<datesBGL.size();i++)
+        {
+            dateValBGL.put(datesBGL.get(i),valuesBGL.get(i));
+            System.out.println("oioioioioi"+valuesBGL.get(i));
+        }
+        for(int i=0;i<datesInsulin.size();i++)
+        {
+            dateValInsulin.put(datesInsulin.get(i),valuesInsulin.get(i));
+            System.out.println("oioioioioi"+valuesInsulin.get(i));
+            dateTypeInsulin.put(datesInsulin.get(i),typesInsulin.get(i));
+        }
 
         Enumeration datesInsulin=dateValInsulin.keys();
         this.datesInsulin=Collections.list(datesInsulin);//convert
@@ -264,25 +243,72 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
-        typesInsulin.add("type1");
-        typesInsulin.add("type2");
-        typesInsulin.add("type3");
-        typesInsulin.add("type4");
-        typesInsulin.add("type5");
-        typesInsulin.add("type6");
-        typesInsulin.add("type7");
+
+//        Calendar calendar=Calendar.getInstance();
+//        calendar.set(2019, 02, 05);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,60);
+//        dateTypeInsulin.put(date,"type1");
+//        dateValBGL.put(date,60);
+//
+//        calendar.set(2019, 01, 01);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,115);
+//        dateTypeInsulin.put(date,"type1");
+//        dateValBGL.put(date,115);
+//
+//        calendar.set(2019, 01, 01);
+//        calendar.set(calendar.HOUR_OF_DAY,1);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,115);
+//        dateTypeInsulin.put(date,"type1");
+//        dateValBGL.put(date,115);
+//
+//        calendar.set(2019, 04, 01);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,115);
+//        dateTypeInsulin.put(date,"type4");
+//        dateValBGL.put(date,115);
+//
+//        calendar.set(2019, 10, 01);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,40);
+//        dateTypeInsulin.put(date,"type2");
+//        dateValBGL.put(date,150);
+//
+//        calendar.set(2018, 11, 01);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,20*3/2);
+//        dateTypeInsulin.put(date,"type3");
+//        dateValBGL.put(date,30);
+//
+//        calendar.set(2018,01, 10);
+//        date=calendar.getTime();
+//        dateValInsulin.put(date,70*3/2);
+//        dateTypeInsulin.put(date,"type5");
+//        dateValBGL.put(date,105);
+
+
+
+//        typesInsulin.add("type1");
+//        typesInsulin.add("type2");
+//        typesInsulin.add("type3");
+//        typesInsulin.add("type4");
+//        typesInsulin.add("type5");
+//        typesInsulin.add("type6");
+//        typesInsulin.add("type7");
 //        typesInsulin.add("type8");
 //        typesInsulin.add("type9");
 //        typesInsulin.add("type10");
 
 
-        prescriptions.add("presc1");//these should be get once we get the date.
-        prescriptions.add("presc2");
-        prescriptions.add("presc3");
-        prescriptions.add("presc4");
-        prescriptions.add("presc5");
-        prescriptions.add("presc6");
-        prescriptions.add("presc7");
+//        prescriptions.add("presc1");//these should be get once we get the date.
+//        prescriptions.add("presc2");
+//        prescriptions.add("presc3");
+//        prescriptions.add("presc4");
+//        prescriptions.add("presc5");
+//        prescriptions.add("presc6");
+//        prescriptions.add("presc7");
 
 
 
@@ -295,14 +321,14 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
         int changerVal;
 
-        int sumTotalInsulin=0;
+        float sumTotalInsulin=0;
         int counterTotalInsulin=0;
-        int sumTotalBGL=0;
+        float sumTotalBGL=0;
         int counterTotalBGL=0;
-        int sum;
+        float sum;
         int counter=0;
         maxPlottedY=0;
-        int yVal;
+        float yVal;
 
         xySeriesInsulin=new PointsGraphSeries<>();
         xySeriesInsulin.setColor(Color.MAGENTA);
@@ -334,14 +360,15 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
                     tempAfterDate = calendar.getTime();
                     calendar.set(calendar.MONTH, j);
                     calendar.set(calendar.DATE, k);
-                    System.out.println("safasgasgas"+calendar.getTime()+k);
-                    sum = 0;
+                    sum = 0f;
                     counter=0;
                     if(k==20) {
+
                         for (int i = 0; i < datesInsulin.size(); i++) {
                             if (datesInsulin.get(i).after(tempBeforeDate) &&
                                     datesInsulin.get(i).before(tempAfterDate)) {
                                 counter++;
+
                                 sum = sum + dateValInsulin.get(datesInsulin.get(i));
                             }
                         }
@@ -367,7 +394,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
 
                     if (counter != 0) {
                         yVal=sum/counter;
-                        if(yVal>maxPlottedY) maxPlottedY=yVal;
+                        if(yVal>maxPlottedY) maxPlottedY=Math.round(yVal);
                     }else yVal=0;
                     if(k==20){
                         xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);

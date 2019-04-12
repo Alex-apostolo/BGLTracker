@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexapostolopoulos.bgltracker.MainActivity.CustomRowData;
+import com.alexapostolopoulos.bgltracker.Model.Prescription;
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
@@ -31,6 +32,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Enumeration;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -83,6 +85,7 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -171,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void addBGLGraphClick(MenuItem item)
     {
+        Intent addBGLGraph = new Intent(this, BGLGraphActivity.class);
+
         Calendar calendar=Calendar.getInstance();
         calendar.set(calendar.MONTH,0);
         calendar.set(calendar.DATE,1);
@@ -181,24 +186,57 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(calendar.MONTH,11);
         calendar.set(calendar.DATE,31);
         Date maxDate= calendar.getTime();
-        Intent addBGLGraph = new Intent(this, BGLGraphActivity.class);
-        System.out.println(" asfasfasgasg1211111111");
         retrieveEntries(minDate,maxDate);
-        System.out.println(appMain.curPatient.getGlucoseWarningLower());
-        System.out.println(appMain.curPatient.getGlucoseWarningUpper());
+
+        ArrayList<Date> datesBGL=new ArrayList<>();
+        ArrayList<Float> valuesBGL=new ArrayList<>();
+        ArrayList<Date> datesInsulin=new ArrayList<>();
+        ArrayList<String> typesInsulin=new ArrayList<>();
+        ArrayList<Float> valuesInsulin=new ArrayList<>();
+        ArrayList<String> allTypesInsulin;
+        float minBGL=appMain.curPatient.getGlucoseWarningLower();
+        float maxBGL=appMain.curPatient.getGlucoseWarningUpper();
+        float BGLBounds[]={minBGL,maxBGL};
+        addBGLGraph.putExtra("BGLBounds",BGLBounds);
+        //pass the bounds
+
+
         for(int i=0;i<measurements.size();i++)
         {
             System.out.println("hey");
-            System.out.println(measurements.get(i).getData());
+
             if(measurements.get(i).getTitle().equals("Insulin"))
             {
+
+
                 Insulin obj = (Insulin)measurements.get(i).getData();
-                System.out.println(obj.getDosage());
-                addBGLGraph.putExtra("measurements",obj.getDosage());
+                String presc=appMain.curPatient.findPrescription(obj.getID()).getName();
+                System.out.println("store:"+obj.getDateTime());
+                datesInsulin.add(obj.getDateTime());
+                valuesInsulin.add(obj.getDosage());
+                typesInsulin.add(presc);
+
+                //pass them
+                addBGLGraph.putExtra("datesInsulin",datesInsulin);
+                addBGLGraph.putExtra("valuesInsulin",valuesInsulin);
+                addBGLGraph.putExtra("insulinTypes",typesInsulin);
+            }
+            if(measurements.get(i).getTitle().equals("Glucose"))
+            {
+                Glucose obj = (Glucose)measurements.get(i).getData();
+                datesBGL.add(obj.getDateTime());
+                valuesBGL.add(obj.getValue());
+
+                addBGLGraph.putExtra("datesBGL",datesBGL);
+                addBGLGraph.putExtra("valuesBGL",valuesBGL);
             }
         }
-        //System.out.println(measurements.get(0));
-        //addBGLGraph.putExtra("measurements",measurements);
+        allTypesInsulin=typesInsulin;
+        Set<String> set = new HashSet<>(allTypesInsulin);
+        allTypesInsulin.clear();
+        allTypesInsulin.addAll(set);
+        addBGLGraph.putExtra("allTypes",allTypesInsulin);
+
         startActivity(addBGLGraph);
     }
 
