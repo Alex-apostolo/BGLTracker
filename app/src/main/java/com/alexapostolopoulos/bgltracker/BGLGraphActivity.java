@@ -66,8 +66,10 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
     Hashtable<Date,Float> dateValInsulin;
     Hashtable<Date,Float> dateValBGL;
     Hashtable<Date,String> dateTypeInsulin;
-    Hashtable<Date,String> datePrescriptionN;
-    Hashtable<Date,String> dateNotes;
+    Hashtable<Date,String> dateNotesBGL;
+    Hashtable<Date,String> dateNotesInsulin;
+    Hashtable<Date,Float> dateMeanInsulin;
+    Hashtable<Date,Float> dateMeanBGL;
 
     double bglAvg;
     double insulinAvg;
@@ -203,10 +205,13 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         ArrayList<Float> valuesInsulin=(ArrayList<Float>) getIntent().getExtras().getSerializable("valuesInsulin");
         datesInsulin=(ArrayList<Date>) getIntent().getExtras().getSerializable("datesInsulin");
         ArrayList<Float> valuesBGL=(ArrayList<Float>) getIntent().getExtras().getSerializable("valuesBGL");
-
+        ArrayList<String> notesBGL=(ArrayList<String>) getIntent().getExtras().getSerializable("notesBGL");
+        ArrayList<String> notesInsulin=(ArrayList<String>) getIntent().getExtras().getSerializable("notesInsulin");
 
         dateValInsulin=new Hashtable<>();
         dateTypeInsulin=new Hashtable<>();
+        dateNotesInsulin=new Hashtable<>();
+        dateNotesBGL=new Hashtable<>();
         dateValBGL=new Hashtable<>();
 
         if(datesBGL==null) datesBGL=new ArrayList<>();
@@ -214,13 +219,15 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         for(int i=0;i<datesBGL.size();i++)
         {
             dateValBGL.put(datesBGL.get(i),valuesBGL.get(i));
-            System.out.println("oioioioioi"+valuesBGL.get(i));
+            dateNotesBGL.put(datesBGL.get(i),notesBGL.get(i));
+            System.out.println("with date:"+datesBGL.get(i)+"with note:"+notesBGL.get(i));
         }
         for(int i=0;i<datesInsulin.size();i++)
         {
             dateValInsulin.put(datesInsulin.get(i),valuesInsulin.get(i));
-            System.out.println("oioioioioi"+valuesInsulin.get(i));
             dateTypeInsulin.put(datesInsulin.get(i),typesInsulin.get(i));
+            dateNotesInsulin.put(datesInsulin.get(i),notesInsulin.get(i));
+            System.out.println("with date:"+datesBGL.get(i)+"with note:"+notesBGL.get(i));
         }
 
         Enumeration datesInsulin=dateValInsulin.keys();
@@ -330,6 +337,8 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         maxPlottedY=0;
         float yVal;
 
+        dateMeanBGL=new Hashtable<>();
+        dateMeanInsulin=new Hashtable<>();
         xySeriesInsulin=new PointsGraphSeries<>();
         xySeriesInsulin.setColor(Color.MAGENTA);
         lineSeriesInsulin=new LineGraphSeries<>(new DataPoint[]{});
@@ -347,6 +356,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         calendar.set(calendar.MINUTE,0);
         calendar.set(calendar.SECOND,0);
         calendar.set(calendar.MILLISECOND,0);
+        int currentYear=calendar.get(Calendar.YEAR);
 
         if(formatShown.equals("year")) {
             calendar.set(calendar.MONTH, 0);
@@ -354,12 +364,17 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
             {
                 calendar.set(calendar.MONTH,0);
                 for (int j = 0; j < (12); j++) {
-                    calendar.set(calendar.DATE, 1);
+                    calendar.set(Calendar.DATE, 1);
+                    calendar.set(Calendar.MONTH, j);
                     tempBeforeDate = calendar.getTime();
-                    calendar.add(calendar.MONTH, 1);
+                    //System.out.println("minDate:"+tempBeforeDate);
+                    calendar.add(Calendar.MONTH, 1);
                     tempAfterDate = calendar.getTime();
-                    calendar.set(calendar.MONTH, j);
-                    calendar.set(calendar.DATE, k);
+                    //System.out.println("maxDate:"+tempAfterDate);
+
+
+                    //System.out.println(calendar.getTime()+"with j: "+j);
+                    calendar.set(Calendar.DATE, k);
                     sum = 0f;
                     counter=0;
                     if(k==20) {
@@ -368,7 +383,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
                             if (datesInsulin.get(i).after(tempBeforeDate) &&
                                     datesInsulin.get(i).before(tempAfterDate)) {
                                 counter++;
-
+                                System.out.println(datesInsulin.get(i));
                                 sum = sum + dateValInsulin.get(datesInsulin.get(i));
                             }
                         }
@@ -397,11 +412,26 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
                         if(yVal>maxPlottedY) maxPlottedY=Math.round(yVal);
                     }else yVal=0;
                     if(k==20){
-                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
-                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
+                        calendar.set(Calendar.MONTH,j);
+                        if(calendar.get(Calendar.YEAR)!=currentYear)
+                        {
+                            calendar.add(Calendar.YEAR,-1);
+                        }
+                        //System.out.println(calendar.getTime()+" "+yVal);
+                        xySeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 143);
+                        lineSeriesInsulin.appendData(new DataPoint(calendar.getTime(), yVal), true, 132);
+                        dateMeanInsulin.put(calendar.getTime(),yVal);
                     } else {
-                        xySeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 12);
-                        lineSeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 12); }
+
+                        calendar.set(Calendar.MONTH,j);
+                        if(calendar.get(Calendar.YEAR)!=currentYear)
+                        {
+                            calendar.add(Calendar.YEAR,-1);
+                        }
+                        System.out.println(calendar.getTime()+" "+yVal);
+                        xySeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 123);
+                        lineSeriesBGL.appendData(new DataPoint(calendar.getTime(), yVal), true, 142); }
+                        dateMeanBGL.put(calendar.getTime(),yVal);
 
                 }
 
@@ -417,7 +447,7 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
                     mScatterPlot.addSeries(xySeriesBGL);
                     bglAvg=sumTotalBGL/counterTotalBGL;
                 }
-
+                //calendar.add(Calendar.YEAR,-1);
             }
 
 
@@ -622,18 +652,75 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         //createScatterPlot();
 
     }
+    public void getPrescriptions(TextView prescT,TextView notesT,Date minDate, Date maxDate)
+    {
+        String presc="";
+        String notes="";
+        for(int i=0;i<datesInsulin.size();i++)
+        {
+            System.out.println(""+minDate+maxDate+datesInsulin.get(i).after(minDate)+datesInsulin.get(i).before(maxDate)+datesInsulin.get(i));
+            if(datesInsulin.get(i).after(minDate) && datesInsulin.get(i).before(maxDate))
+            {
+                System.out.println(dateTypeInsulin.get(datesInsulin.get(i)));
+                presc=presc+dateTypeInsulin.get(datesInsulin.get(i));
+                notes=notes+dateTypeInsulin.get(datesInsulin.get(i))+": "+
+                        dateNotesInsulin.get(datesInsulin.get(i))+"\n";
+
+            }
+
+        }
+        prescT.setText(presc);
+        notesT.setText(notes);
+
+    }
+    public void getNotes(TextView notesT,Date minDate, Date maxDate)
+    {
+        String notes="";
+        for(int i=0;i<datesBGL.size();i++)
+        {
+            //System.out.println(""+minDate+maxDate+datesInsulin.get(i).after(minDate)+datesInsulin.get(i).before(maxDate)+datesInsulin.get(i));
+            if(datesBGL.get(i).after(minDate) && datesBGL.get(i).before(maxDate))
+            {
+                //System.out.println(dateTypeInsulin.get(datesInsulin.get(i)));
+                notes=notes+datesBGL.get(i)+":"+dateNotesBGL.get(datesBGL.get(i))+"\n";
+
+            }
+
+        }
+
+        notesT.setText(notes);
+    }
     public void dialogBoxInsulinListener() {
         xySeriesInsulin.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series xySeriesInsulin, DataPointInterface dataPoint) {
-//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                Date date=((new Date((long) dataPoint.getX())));
+                System.out.println(date+"- date selected");
+                SimpleDateFormat simpleDateformat = new SimpleDateFormat("MM"); // two digit numerical represenation
+                SimpleDateFormat displaying=new SimpleDateFormat("MMMM Y");
+                String s=simpleDateformat.format(date);
+                int month=Integer.parseInt(s)-1;
+                Calendar c=Calendar.getInstance();
+                c.set(Calendar.MONTH,month);
+                c.set(Calendar.DATE,1);
+                c.set(Calendar.HOUR_OF_DAY,0);
+                c.set(Calendar.MINUTE,0);
+
+                Date minDate=c.getTime();
+                c.add(Calendar.MONTH,1);
+                Date maxDate=c.getTime();
+
                 insulinDialog = new Dialog(BGLGraphActivity.this);
                 insulinDialog.setContentView(R.layout.bglgraph_insulin_dialog);
                 TextView prescrType = insulinDialog.findViewById(R.id.BGLGraph_prescrType_textView);
-                //date and time
-                TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
-                TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
 
+
+                TextView insulinDataTime = insulinDialog.findViewById(R.id.BGLGraph_datetime_insulin_textView);
+                insulinDataTime.setText(""+displaying.format(minDate)+"-to-"+displaying.format(maxDate));
+                TextView value = insulinDialog.findViewById(R.id.BGLGraph_insulin_textView);
+                if(dateMeanInsulin.get(date)!=null)value.setText(dateMeanInsulin.get(date).toString());
+                TextView notes = insulinDialog.findViewById(R.id.BGLGraph_note_inputField);
+                getPrescriptions(prescrType,notes,minDate,maxDate);
                 //assign values to the above views
                 insulinDialog.show();
             }
@@ -644,13 +731,32 @@ public class BGLGraphActivity extends AppCompatActivity implements AdapterView.O
         xySeriesBGL.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series xySeriesBGL, DataPointInterface dataPoint) {
-//                String dateFormatted = sdf[1].format((new Date((long) dataPoint.getX())).getTime());
+                Date date = (new Date((long) dataPoint.getX()));
+                SimpleDateFormat simpleDateformat = new SimpleDateFormat("MM"); // two digit numerical represenation
+                SimpleDateFormat displaying=new SimpleDateFormat("MMMM Y");
+                String s=simpleDateformat.format(date);
+                int month=Integer.parseInt(s)-1;
+                Calendar c=Calendar.getInstance();
+                c.set(c.MONTH,month);
+                c.set(c.DATE,1);
+                c.set(c.HOUR_OF_DAY,0);
+                c.set(c.MINUTE,0);
+
+                Date minDate=c.getTime();
+                c.add(c.MONTH,1);
+                Date maxDate=c.getTime();
+
                 bglDialog = new Dialog(BGLGraphActivity.this);
                 bglDialog.setContentView(R.layout.bglgraph_bgl_dialog);
                 TextView sugarConc = bglDialog.findViewById(R.id.BGLGraph_glucose_sugarCon_inputField);
-                //date and time
-                TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
 
+                if(dateMeanBGL.get(date)!=null)sugarConc.setText(dateMeanBGL.get(date).toString());
+                TextView glucoseDateTime = bglDialog.findViewById(R.id.BGLGraph_datetime_glucose_textView);
+                System.out.println(glucoseDateTime);
+                glucoseDateTime.setText(""+displaying.format(minDate)+"-to-"+displaying.format(maxDate));
+                TextView notes = bglDialog.findViewById(R.id.BGLGraph_glucose_notes_inputField);
+                System.out.println("Selected:"+date);
+                getNotes(notes,minDate,maxDate);
                 //assign values to the above views
                 bglDialog.show();
             }

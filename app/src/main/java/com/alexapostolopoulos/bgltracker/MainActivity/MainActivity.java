@@ -190,8 +190,10 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Date> datesBGL=new ArrayList<>();
         ArrayList<Float> valuesBGL=new ArrayList<>();
+        ArrayList<String> notesBGL=new ArrayList<>();
         ArrayList<Date> datesInsulin=new ArrayList<>();
         ArrayList<String> typesInsulin=new ArrayList<>();
+        ArrayList<String> notesInsulin=new ArrayList<>();
         ArrayList<Float> valuesInsulin=new ArrayList<>();
         ArrayList<String> allTypesInsulin;
         float minBGL=appMain.curPatient.getGlucoseWarningLower();
@@ -215,8 +217,10 @@ public class MainActivity extends AppCompatActivity {
                 datesInsulin.add(obj.getDateTime());
                 valuesInsulin.add(obj.getDosage());
                 typesInsulin.add(presc);
+                notesInsulin.add(obj.getNotes());
 
                 //pass them
+                addBGLGraph.putExtra("notesInsulin",notesInsulin);
                 addBGLGraph.putExtra("datesInsulin",datesInsulin);
                 addBGLGraph.putExtra("valuesInsulin",valuesInsulin);
                 addBGLGraph.putExtra("insulinTypes",typesInsulin);
@@ -226,7 +230,9 @@ public class MainActivity extends AppCompatActivity {
                 Glucose obj = (Glucose)measurements.get(i).getData();
                 datesBGL.add(obj.getDateTime());
                 valuesBGL.add(obj.getValue());
-
+                notesBGL.add(obj.getNotes());
+                System.out.println("Note              "+obj.getNotes());
+                addBGLGraph.putExtra("notesBGL",notesBGL);
                 addBGLGraph.putExtra("datesBGL",datesBGL);
                 addBGLGraph.putExtra("valuesBGL",valuesBGL);
             }
