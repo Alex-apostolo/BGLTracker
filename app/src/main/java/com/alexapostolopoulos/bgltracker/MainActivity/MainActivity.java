@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alexapostolopoulos.bgltracker.GoalsActivity;
 import com.alexapostolopoulos.bgltracker.MainActivity.CustomRowData;
 import com.alexapostolopoulos.bgltracker.Model.Prescription;
 import com.jjoe64.graphview.DefaultLabelFormatter;
@@ -310,6 +311,9 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, AddMedicationActivity.class);
                 intent.putExtra("isNew",true);
                 intent.putExtra("callingForm","Main");
+                startActivity(intent);
+            case R.id.fab_menu_goals:
+                intent = new Intent(this, GoalsActivity.class);
                 startActivity(intent);
         }
     }

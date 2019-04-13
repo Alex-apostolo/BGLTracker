@@ -87,6 +87,17 @@
             fab:fab_label="Insulin"
             fab:fab_size="mini" />
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_menu_goals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onButtonOptionsItemSelected"
+            android:src="@drawable/ic_lightbulb_outline_black_24dp"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorPrimary"
+            fab:fab_label="Goals"
+            fab:fab_size="mini" />
+
 
     </com.github.clans.fab.FloatingActionMenu>
 </RelativeLayout>
