@@ -238,12 +238,12 @@ public class MainActivity extends AppCompatActivity {
                 addBGLGraph.putExtra("valuesBGL",valuesBGL);
             }
         }
-        allTypesInsulin=typesInsulin;
-        Set<String> set = new HashSet<>(allTypesInsulin);
-        allTypesInsulin.clear();
-        allTypesInsulin.addAll(set);
-        addBGLGraph.putExtra("allTypes",allTypesInsulin);
-
+//        allTypesInsulin=typesInsulin;
+//        Set<String> set = new HashSet<>(allTypesInsulin);
+//        allTypesInsulin.clear();
+//        allTypesInsulin.addAll(set);
+//        addBGLGraph.putExtra("allTypes",allTypesInsulin);
+//
         startActivity(addBGLGraph);
     }
 
