@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_icons8_filter_filled_100"
+        android:title="@string/menu_filter"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menu_filter_all"
+                android:onClick="filterAllClick"
+                android:title="@string/menu_filter_all" />
+            <item
+                android:id="@string/menu_filter_glucose"
+                android:onClick="filterGlucoseClick"
+                android:title="@string/menu_filter_glucose" />
+            <item
+                android:id="@+id/menu_filter_insulin"
+                android:onClick="filterInsulinClick"
+                android:title="@string/menu_filter_insulin" />
+            <item
+                android:id="@+id/menu_filter_medication"
+                android:onClick="filterMedicationClick"
+                android:title="@string/menu_filter_medication" />
+        </menu>
+    </item>
+
+
+    <item
+        android:icon="@drawable/ic_sort_black_24dp"
+        android:title="@string/menu_sort"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/SortByLastDay"
+                android:onClick="LastDayClick"
+                android:title="@string/menu_sort_lastDay" />
+            <item
+                android:id="@+id/SortByLastWeek"
+                android:onClick="LastWeekClick"
+                android:title="@string/menu_sort_lastWeek" />
+            <item
+                android:id="@+id/SelectDayRange"
+                android:title="@string/menu_sort_SelectDateRange" />
+        </menu>
+    </item>
+
+    <item
+        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:title="@string/menu_patient"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/addPatient_button"
+                android:onClick="addPatientClick"
+                android:title="@string/menu_patient_addPatient" />
+            <item
+                android:id="@+id/BGLGraph_button"
+                android:onClick="addBGLGraphClick"
+                android:title="@string/menu_patient_BGLGraph" />
+            <item
+                android:id="@+id/editGoals_button"
+                android:onClick="editGoalsClick"
+                android:title="Edit Goals"/>
+        </menu>
+
+    </item>
+
+</menu>

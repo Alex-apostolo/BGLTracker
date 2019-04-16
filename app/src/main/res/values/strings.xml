@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">BGL Tracker</string>
+
+    <!--Menu strings-->
+    <string name="menu_filter">filter</string>
+    <string name="menu_sort">sort</string>
+    <string name="menu_patient">patient</string>
+    <string name="menu_more_vert">more</string>
+
+    <!--Filter Strings-->
+    <string name="menu_filter_all">All</string>
+    <string name="menu_filter_glucose">Glucose</string>
+    <string name="menu_filter_insulin">Insulin</string>
+    <string name="menu_filter_medication">Medication</string>
+
+    <!--Sort Strings-->
+    <string name="menu_sort_lastDay">LastDay</string>
+    <string name="menu_sort_lastWeek">LastWeek</string>
+    <string name="menu_sort_SelectDateRange">SelectDateRange</string>
+
+    <!--Patient Strings-->
+    <string name="menu_patient_addPatient">ManagePatient</string>
+    <string name="menu_patient_BGLGraph">BGLGraph</string>
+
+    <string-array name="addPresc_type_array">
+        <item>General</item>
+        <item>Insulin</item>
+    </string-array>
+
+    <string-array name="addPresc_freq_array">
+        <item>every X mins</item>
+        <item>every X hours</item>
+        <item>X times a day</item>
+        <item>Once a week</item>
+        <item>Once every X days</item>
+    </string-array>
+
+    <string-array name="addPresc_advice_array">
+        <item>N/A</item>
+        <item>Take Before Meal</item>
+        <item>Take After Meal</item>
+    </string-array>
+</resources>

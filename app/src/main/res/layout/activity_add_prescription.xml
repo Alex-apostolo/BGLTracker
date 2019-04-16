@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addPrescr_gridLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:columnCount="2"
+    tools:context=".AddPrescriptionActivity">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Type"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <Spinner
+        android:id="@+id/addPrescr_type_spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
+
+    <LinearLayout
+        android:id="@+id/addPrescr_presc_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="2"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:orientation="vertical" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Frequency"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <Spinner
+        android:id="@+id/addPrescr_freq_spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="right|center_vertical"
+            android:text="X = "
+            android:textColor="@android:color/black" />
+
+        <EditText
+            android:id="@+id/addPresc_X_editText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/textView2"
+            android:ems="10"
+            android:maxLength="5"
+            android:gravity="center"
+            android:inputType="number" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Quantity"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/addPrescr_quantity_editText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:ems="10"
+        android:maxLength="6"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="unit" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Advice"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <Spinner
+        android:id="@+id/addPrescr_advice_spinner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="center_vertical"
+        android:text="Notes"
+        android:textAppearance="@style/CustomTextTitle" />
+
+    <EditText
+        android:id="@+id/addPrescr_notes_editText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="2"
+        android:layout_columnSpan="2"
+        android:layout_columnWeight="1"
+        android:gravity="top"
+        android:maxLength="1000"
+        android:inputType="textMultiLine" />
+
+</GridLayout>
